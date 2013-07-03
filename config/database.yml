@@ -1,0 +1,27 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: Lilly_development
+  pool: 5
+  username: lilly
+  password: password1
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: Lilly_test
+  pool: 5
+  username: lilly
+  password: password1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: Lilly_production
+  pool: 5
+  username: lilly
+  password: password1
+
+cucumber:
+  <<: *test
