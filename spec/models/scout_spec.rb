@@ -14,4 +14,13 @@ describe Scout do
     scout = FactoryGirl.create(:scout)
     scout.full_name.should eql "Tristan McGraw"
   end
+
+  it "cannot create a scout without a first name" do
+     lambda{ Scout.create!(:last_name => "Doe") }.should raise_exception
+
+  end
+
+  it "cannot create a scout without a last name" do
+    lambda{ Scout.create!(:first_name => "John") }.should raise_exception
+  end
 end
