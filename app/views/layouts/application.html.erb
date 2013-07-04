@@ -10,5 +10,33 @@
 
 <%= yield %>
 
+<script type="text/template" id="new_scout_modal">
+	<h1 class="modal-header">Add New scout</h1>
+  <form class="modal-body">
+    <label>First Name</label>
+    <input id="first_name" type="text">
+    <label>Last Name</label>
+    <input id="last_name" type="text">
+    <label>Birthday</label  >
+    <input id="birthdate" type="date">
+  </form>
+</script>
+
+<div id="modal_container" class="modal hide fade in" style="display: none; ">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal">×</a>
+		<h3>This is a Modal Heading</h3>
+	</div>
+	<div class="modal-body">
+		<h4>Text in a modal</h4>
+		<p>You can add some text here.</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn btn-success" id="complete">Add</a>
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+	</div>
+</div>
+
+
 </body>
 </html>

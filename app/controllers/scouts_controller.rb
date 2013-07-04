@@ -6,4 +6,21 @@ class ScoutsController < ApplicationController
   def index
     @scouts = Scout.all
   end
+
+  def create
+  	Scout.new
+  end
+
+  def new
+  	@scout = Scout.new(:first_name => params[:first_name], :last_name => params[:last_name], :birthdate => params[:birthday])
+  	 respond_to do |format|
+  	 	if @scout.save
+          format.html { redirect_to @scout, notice: 'Scout was successfully created.' }
+          format.json { render json: @scout, :status => :ok}
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @scout.errors, status: :unprocessable_entity }
+        end
+    end
+  end
 end
