@@ -41,3 +41,11 @@ end
 Then /^I go to that scouts detail page$/ do
   find('h1', text: "Tristan")
 end
+
+Given /^I confirm the popup$/ do
+  page.driver.browser.switch_to.alert.accept
+end
+
+Then /^the scout will not be on the main list$/ do
+  page.should_not have_content @scout.first_name
+end
