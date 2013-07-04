@@ -23,4 +23,8 @@ $(document).ready(function() {
     req.done(success);
     $('#modal_container').modal('hide');
   });
+
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  })
 });

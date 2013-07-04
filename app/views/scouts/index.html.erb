@@ -1,19 +1,23 @@
 <div class="container">
-  <button type="button" class="btn btn-primary" id="add_new_scout">Add Scout</button>
-  <table class="table table-striped" id="main_scout_list">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @scouts.each do |scout| %>
-      <tr>
-        <td><%= scout.full_name %></td>
-        <td><%= scout.age %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="span12">
+      <button type="button" class="btn btn-primary" id="add_new_scout">Add Scout</button>
+      <table class="table table-striped" id="main_scout_list">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @scouts.each do |scout| %>
+          <tr data-link="<%= edit_scout_path(scout) %>">
+            <td><%= scout.full_name %></td>
+            <td><%= scout.age %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

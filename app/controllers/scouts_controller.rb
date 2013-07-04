@@ -23,4 +23,12 @@ class ScoutsController < ApplicationController
         end
     end
   end
+
+  def edit
+
+  end
+
+  def set_scout
+    @scout = Scout.find(params[:id])
+  end
 end

@@ -5,7 +5,7 @@ Given /^I am on the scout list page$/ do
 end
 
 Given /^I create a scout named (.*) (.*)$/ do |first_name, last_name|
-  @scout = Scout.create!(:first_name => first_name, :last_name => last_name)
+  @scout = Scout.create!(:first_name => first_name, :last_name => last_name, :birthdate => 15.years.ago)
 end
 
 Given /^his birthday is (\d+) years ago$/ do |birthday|
@@ -31,4 +31,13 @@ Given /^I add new scout$/  do
   fill_in(:last_name, :with => @scout.last_name)
   fill_in(:birthdate, :with => 12.years.ago)
   click_button("Add")
+end
+
+Given /^I click on the his row$/ do
+  visit scouts_path
+  find('tr', text: "Tristan").click
+end
+
+Then /^I go to that scouts detail page$/ do
+  find('h1', text: "Tristan")
 end
