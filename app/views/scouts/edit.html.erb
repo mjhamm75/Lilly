@@ -1,3 +1,4 @@
 <div class="container">
   <h1><%= @scout.full_name %></h1>
+  <%= button_to 'Remove Scout', @scout, :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
 </div>

@@ -25,7 +25,14 @@ class ScoutsController < ApplicationController
   end
 
   def edit
+  end
 
+  def destroy
+    @scout.destroy
+    respond_to do |format|
+      format.html { redirect_to scouts_path }
+      format.json { head :no_content }
+    end
   end
 
   def set_scout
