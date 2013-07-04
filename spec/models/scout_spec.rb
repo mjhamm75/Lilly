@@ -16,11 +16,11 @@ describe Scout do
   end
 
   it "cannot create a scout without a first name" do
-     lambda{ Scout.create!(:last_name => "Doe") }.should raise_exception
+     lambda{ Scout.create!(:last_name => "Doe") }.should raise_exception ActiveRecord::RecordInvalid
 
   end
 
   it "cannot create a scout without a last name" do
-    lambda{ Scout.create!(:first_name => "John") }.should raise_exception
+    lambda{ Scout.create!(:first_name => "John") }.should raise_exception ActiveRecord::RecordInvalid
   end
 end
