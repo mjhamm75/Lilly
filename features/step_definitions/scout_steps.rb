@@ -49,3 +49,15 @@ end
 Then /^the scout will not be on the main list$/ do
   page.should_not have_content @scout.first_name
 end
+
+Given /^I am on his detail page$/ do
+  visit edit_scout_path(@scout)
+end
+
+Then /^I should see (?:an|a) (.*) Section$/ do |section|
+  find('h2', text: section)
+end
+
+Then(/^show me the response$/) do
+  puts page.body.inspect
+end
