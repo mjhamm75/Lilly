@@ -11,11 +11,6 @@ Feature: Single scout
     And I click on the his row
     Then I go to that scouts detail page
 
-  Scenario: View Advancements and Merit Badges
-    Given I am on his detail page
-    Then I should see an Advancements Section
-    And I should see a Merit Badges Section
-
   @javascript
   Scenario: Delete scout
     And I click on the his row
@@ -23,3 +18,18 @@ Feature: Single scout
     And I click the Remove Scout button
     And I confirm the popup
     Then the scout will not be on the main list
+
+  Scenario: View Advancements and Merit Badges
+    Given I am on his detail page
+    Then I should see an Advancements Section
+    And I should see a Merit Badges Section
+
+  Scenario: Advancements should be empty
+    Given I am on his detail page
+    Then I should see an Advancements Section
+    And the Advancements Section should be empty
+
+  Scenario: Advancements should be empty
+    Given I am on his detail page
+    And I should see a Merit Badges Section
+    And the Merit Badges Section should be empty

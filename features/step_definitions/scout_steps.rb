@@ -61,3 +61,8 @@ end
 Then(/^show me the response$/) do
   puts page.body.inspect
 end
+
+Then /^the (.*) Section should be empty$/ do |section|
+  div = find('#' + phraseToCamelCase(section.downcase))
+  div.find('.empty')
+end
