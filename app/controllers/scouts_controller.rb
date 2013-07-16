@@ -25,6 +25,16 @@ class ScoutsController < ApplicationController
   end
 
   def edit
+    @scout = set_scout
+    respond_to do |format|
+      format.html { render 'edit' }
+      format.json {
+         render :json => {
+            :scout => @scout,
+            :merit_badges => @scout.merit_badges
+         } , :status => :ok
+      }
+    end
   end
 
   def destroy
