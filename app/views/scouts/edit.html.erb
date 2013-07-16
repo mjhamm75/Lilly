@@ -6,7 +6,43 @@
   </div>
   <div id="merit_badges" class="hero-unit">
     <h2>Merit Badges</h2>
-    <div class="empty">Boo, no merit badges yet</div>
+    <% if @scout.merit_badges.count == 0 %>
+      <div class="empty">Boo, no merit badges yet</div>
+    <% else %>
+      <% @scout.merit_badges.each do |merit_badge| %>
+      <div class="empty">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Percentage Complete
+              </th>
+              <th>
+                Eagle Required
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= merit_badge.name %>
+              </td>
+              <td>
+                <%= merit_badge.percentage_complete %>
+              </td>
+              <td>
+                <%= merit_badge.eagle_required %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
+    <% end %>
+    <a href="#" class="btn btn-success" id="add_merit_badge">Add</a>
   </div>
   <%= button_to 'Remove Scout', @scout, :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
 </div>
