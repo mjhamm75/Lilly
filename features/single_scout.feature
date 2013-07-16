@@ -24,12 +24,17 @@ Feature: Single scout
     Then I should see an Advancements Section
     And I should see a Merit Badges Section
 
-  Scenario: Advancements should be empty
+  Scenario: Advancements should initially be empty
     Given I am on his detail page
     Then I should see an Advancements Section
     And the Advancements Section should be empty
 
-  Scenario: Advancements should be empty
+  Scenario: Advancements should initially be empty
     Given I am on his detail page
     And I should see a Merit Badges Section
     And the Merit Badges Section should be empty
+
+  Scenario: After the scout receives a merit badge it will appear on merit badge list
+    Given I am on his detail page
+    When he receives the Swimming merit badge
+    Then the Merit Badge section will contain the Swimming merit badge

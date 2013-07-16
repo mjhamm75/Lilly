@@ -66,3 +66,11 @@ Then /^the (.*) Section should be empty$/ do |section|
   div = find('#' + phraseToCamelCase(section.downcase))
   div.find('.empty')
 end
+
+When /^he receives the (.*) merit badge$/ do |badge|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^the Merit Badge section will contain the (.*) merit badge$/  do |badge|
+  pending # express the regexp above with the code you wish you had
+end
