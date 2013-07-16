@@ -67,7 +67,7 @@ Then /^the (.*) Section should be empty$/ do |section|
   div.find('.empty')
 end
 
-When /^he receives the (.*) merit badge$/ do |badge|
+When /^he starts the (.*) merit badge$/ do |badge|
   pending # express the regexp above with the code you wish you had
 end
 

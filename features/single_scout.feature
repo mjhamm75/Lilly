@@ -36,5 +36,5 @@ Feature: Single scout
 
   Scenario: After the scout receives a merit badge it will appear on merit badge list
     Given I am on his detail page
-    When he receives the Swimming merit badge
+    When he starts the Swimming merit badge
     Then the Merit Badge section will contain the Swimming merit badge
