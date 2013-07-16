@@ -22,6 +22,19 @@
   </form>
 </script>
 
+<script type="text/template" id="add_merit_badge_modal">
+  <h1 class="modal-header">Choose Merit Badge</h1>
+  <form class="modal-body">
+    <div class="chosen">
+    <select class="chzn-select">
+      <% MeritBadgeList.all.each do |mb| %>
+      <option><%= mb.name %></option>
+      <% end %>
+    </select>
+    </div>
+  </form>
+</script>
+
 <div id="modal_container" class="modal hide fade in" style="display: none; ">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
@@ -36,7 +49,6 @@
 		<a href="#" class="btn" data-dismiss="modal">Close</a>
 	</div>
 </div>
-
 
 </body>
 </html>
