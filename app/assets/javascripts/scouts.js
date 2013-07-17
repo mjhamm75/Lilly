@@ -46,6 +46,7 @@ $(document).ready(function() {
       var template = $("#add_merit_badge_modal").html();
       // var html = Mustache.to_html(template, badges);
       create_modal(template);
+      $('.chzn-select').chosen();
     };
     req.done(success);
   });
