@@ -50,6 +50,8 @@ $(document).ready(function() {
   };
 
   var add_new_merit_badge = function() {
+    var badge_name = $('.chzn-select option:selected').text();
+    $('#merit_badges table tr:last').after('<tr><td>' + badge_name + '</td><td>0</td></tr>' );
     console.log("here");
   }
 });
