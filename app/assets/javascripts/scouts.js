@@ -28,27 +28,9 @@ $(document).ready(function() {
 
   $("#add_merit_badge").click(function(e) {
     e.preventDefault();
-    var req = $.ajax({
-      url: '/merit_badge_list'
-    });
-    var success = function(data) {
-      // var badges = _.map(data, function(d){
-      //   return d.name;
-      // });
-
-      var badges = _.object(
-          _.map(_.keys(data), function(key){
-              var badge = data[key];
-              return [key, [badge.name]];
-          })
-      )
-
-      var template = $("#add_merit_badge_modal").html();
-      // var html = Mustache.to_html(template, badges);
-      create_modal(template);
-      $('.chzn-select').chosen();
-    };
-    req.done(success);
+    var template = $("#add_merit_badge_modal").html();
+    create_modal(template);
+    $('.chzn-select').chosen();
   });
 
   var create_modal = function(template) {
