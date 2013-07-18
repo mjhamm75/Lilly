@@ -68,9 +68,14 @@ Then /^the (.*) Section should be empty$/ do |section|
 end
 
 When /^he starts the (.*) merit badge$/ do |badge|
-  pending # express the regexp above with the code you wish you had
+  within("//div[@id='merit_badges']") do
+    click_link("Add")
+    sleep(2.seconds)
+    select(badge, :from => "chzn-select")
+    click_button("Add")
+  end
 end
 
 Then /^the Merit Badge section will contain the (.*) merit badge$/  do |badge|
-  pending # express the regexp above with the code you wish you had
+  find('tr', text: badge)
 end

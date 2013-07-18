@@ -26,7 +26,7 @@
   <h1 class="modal-header">Choose Merit Badge</h1>
   <form class="modal-body">
     <div class="chosen">
-    <select class="chzn-select">
+    <select class="chzn-select" id="chzn-select">
       <% MeritBadgeList.all.each do |mb| %>
       <option><%= mb.name %></option>
       <% end %>
