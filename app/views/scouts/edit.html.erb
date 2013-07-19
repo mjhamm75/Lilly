@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @scout.full_name %></h1>
+  <h1 data-scout-id="<%= @scout.id %>"><%= @scout.full_name %></h1>
   <div id="advancements" class="hero-unit">
     <h2>Advancements</h2>
     <div class="empty">Need to work on Advancements</div>
@@ -20,10 +20,10 @@
           </tr>
         </thead>
         <tbody>
-          <% @scout.merit_badges do |badge|%>
+          <% @scout.merit_badges.each do |badge|%>
           <tr>
-            <td>badge.name</td>
-            <td>badge.percentage_complete</td>
+            <td><%= badge.name %></td>
+            <td><%= badge.percentage_complete %></td>
           </tr>
           <% end %>
         </tbody>

@@ -50,8 +50,17 @@ $(document).ready(function() {
   };
 
   var add_new_merit_badge = function() {
-    var badge_name = $('.chzn-select option:selected').text();
-    $('#merit_badges table tbody tr:last').after('<tr><td>' + badge_name + '</td><td>0</td></tr>' );
+    var badge = $('.chzn-select option:selected').text();
+    var id = $("[data-scout-id]").data().scoutId;
+    var req = $.ajax({
+      url: '/scouts/' + id+ '/merit_badges/new',
+      data: {
+        badge: badge,
+        id: id
+      },
+      dataType: 'json'
+    });
+    $('#merit_badges table tbody tr:last').after('<tr><td>' + badge + '</td><td>0</td>' + 0 + '</tr>' );
     console.log("here");
   }
 });
