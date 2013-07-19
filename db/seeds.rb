@@ -143,3 +143,66 @@ if MeritBadgeList.all.count == 0
       { name: "Woodwork" }
     ])
 end
+
+if MeritBadgeList.find_by_name("Swimming").eagle_required == false
+  mb = MeritBadgeList.find_by_name("First Aid")
+  mb.eagle_required = true
+  puts 1
+  mb.save
+  mb = MeritBadgeList.find_by_name("Citizenship in the Community")
+  mb.eagle_required = true
+  puts 2
+  mb.save
+  mb = MeritBadgeList.find_by_name("Citizenship in the Nation")
+  mb.eagle_required = true
+  puts 3
+  mb.save
+  mb = MeritBadgeList.find_by_name("Citizenship in the World")
+  mb.eagle_required = true
+  puts 4
+  mb.save
+  mb = MeritBadgeList.find_by_name("Communications")
+  mb.eagle_required = true
+  puts 5
+  mb.save
+  mb = MeritBadgeList.find_by_name("Personal Fitness")
+  mb.eagle_required = true
+  puts 6
+  mb.save
+  mb = MeritBadgeList.find_by_name("Emergency Preparedness")
+  mb.eagle_required = true
+  puts 7
+  mb.save
+  mb = MeritBadgeList.find_by_name("Lifesaving")
+  mb.eagle_required = true
+  puts 8
+  mb.save
+  mb = MeritBadgeList.find_by_name("Environmental Science")
+  mb.eagle_required = true
+  puts 9
+  mb.save
+  mb = MeritBadgeList.find_by_name("Personal Management")
+  mb.eagle_required = true
+  puts 10
+  mb.save
+  mb = MeritBadgeList.find_by_name("Swimming")
+  mb.eagle_required = true
+  puts 11
+  mb.save
+  mb = MeritBadgeList.find_by_name("Hiking")
+  mb.eagle_required = true
+  puts 12
+  mb.save
+  mb = MeritBadgeList.find_by_name("Cycling")
+  mb.eagle_required = true
+  puts 13
+  mb.save
+  mb = MeritBadgeList.find_by_name("Camping")
+  mb.eagle_required = true
+  puts 14
+  mb.save
+  mb = MeritBadgeList.find_by_name("Family Life")
+  mb.eagle_required = true
+  puts 15
+  mb.save
+end
