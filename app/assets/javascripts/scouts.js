@@ -60,7 +60,9 @@ $(document).ready(function() {
       },
       dataType: 'json'
     });
-    $('#merit_badges table tbody tr:last').after('<tr><td>' + badge + '</td><td>0</td>' + 0 + '</tr>' );
-    console.log("here");
+    var success = function(data) {
+      $('#merit_badges table tbody tr:last').after('<tr><td>' + data.name + '</td><td>0</td>' + 0 + '</td><td>' + data.eagle_required + '</td></tr>' );
+    };
+    req.done(success);
   }
 });
