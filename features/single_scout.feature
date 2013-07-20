@@ -34,7 +34,9 @@ Feature: Single scout
     And I should see a Merit Badges Section
     And the Merit Badges Section should be empty
 
-  Scenario: After the scout receives a merit badge it will appear on merit badge list
+  Scenario: Select merit badges should show on list
     Given I am on his detail page
     When he starts the Swimming merit badge
     Then the Merit Badge section will contain the Swimming merit badge
+
+  Scenario: The merit badge list is in alphabetical order

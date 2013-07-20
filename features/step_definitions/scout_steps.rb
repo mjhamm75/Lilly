@@ -70,7 +70,7 @@ end
 When /^he starts the (.*) merit badge$/ do |badge|
   within("//div[@id='merit_badges']") do
     click_link("Add")
-    sleep(2.seconds)
+    sleep(5.seconds)
     select(badge, :from => "chzn-select")
     click_button("Add")
   end
