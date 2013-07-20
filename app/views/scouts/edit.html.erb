@@ -12,22 +12,25 @@
         <thead>
           <tr>
             <th>
+            </th>
+            <th>
               Name
             </th>
             <th>
               Progress
-            </th>
-            <th>
-              Eagle Required
             </th>
           </tr>
         </thead>
         <tbody>
           <% @scout.merit_badges.each do |badge|%>
           <tr>
+            <td>
+              <% if badge.eagle_required == true %>
+              <i class="icon-ok"></i>
+              <% end %>
+            </td>
             <td><%= badge.name %></td>
             <td>0</td>
-            <td><%= badge.eagle_required %></td>
           </tr>
           <% end %>
         </tbody>

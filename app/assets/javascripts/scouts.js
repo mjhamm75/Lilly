@@ -62,9 +62,9 @@ $(document).ready(function() {
     var success = function(data) {
       var mb = data.merit_badge;
       if($('#merit_badges table tbody tr').size() > 0) {
-        $('#merit_badges table tbody tr:last').after('<tr><td>' + mb.name + '</td><td>0</td>' + 0 + '</td><td>' + mb.eagle_required + '</td></tr>' );
+        $('#merit_badges table tbody tr:last').after('<tr><td><i class="icon-ok"></i></td><td>' + mb.name + '</td><td>0</td>' + 0 + '</td></tr>' );
       } else {
-        $('#merit_badges table tbody').append('<tr><td>' + mb.name + '</td><td>0</td>' + 0 + '</td><td>' + mb.eagle_required + '</td></tr>' );
+        $('#merit_badges table tbody').append('<tr><td><i class="icon-ok"></i></td><td>' + mb.name + '</td><td>0</td>' + 0 + '</td></tr>' );
       }
     };
     req.done(success);
