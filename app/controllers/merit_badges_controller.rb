@@ -1,4 +1,9 @@
 class MeritBadgesController < ApplicationController
+
+  def index
+    @badges = MeritBadgeList.all
+  end
+  
   def new
     @scout = Scout.find(params[:id])
     @scout.merit_badges.create!(:name => params[:badge])

@@ -1,0 +1,3 @@
+class Swimming < MeritBadge
+	
+end

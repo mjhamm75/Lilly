@@ -11,22 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130719093806) do
+ActiveRecord::Schema.define(version: 20130720112916) do
 
-  create_table "merit_badge_lists", force: true do |t|
+  create_table "advancements", force: true do |t|
+    t.integer  "scout_id"
+    t.integer  "merit_badge_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "merit_badges", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "eagle_required", default: false
-  end
-
-  create_table "merit_badges", force: true do |t|
-    t.integer  "scout_id"
-    t.string   "name"
-    t.boolean  "eagle_required"
-    t.integer  "percentage_complete", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "scouts", force: true do |t|

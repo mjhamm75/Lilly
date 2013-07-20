@@ -2,7 +2,6 @@ Lilly::Application.routes.draw do
   resources :scouts do
     resources :merit_badges, only: [:new]
   end
-  resources :merit_badge_list, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

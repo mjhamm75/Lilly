@@ -1,3 +1,6 @@
 class MeritBadge < ActiveRecord::Base
-  belongs_to :scout
+  default_scope order('name ASC')
+  
+  has_many :advancements
+  has_many :scouts, through: :advancements
 end

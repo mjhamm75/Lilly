@@ -45,6 +45,18 @@ class ScoutsController < ApplicationController
     end
   end
 
+  def show
+    mb = MeritBadge.find_by_name(params[:badge])
+    @scout.advancements.create(merit_badge: mb)
+    respond_to do |format|
+      format.json {
+        render :json => {
+          :merit_badge => mb
+        }, :status => :ok
+      }
+    end
+  end
+
   def set_scout
     @scout = Scout.find(params[:id])
   end

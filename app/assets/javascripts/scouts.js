@@ -53,15 +53,19 @@ $(document).ready(function() {
     var badge = $('.chzn-select option:selected').text();
     var id = $("[data-scout-id]").data().scoutId;
     var req = $.ajax({
-      url: '/scouts/' + id+ '/merit_badges/new',
+      url: '/scouts/' + id,
       data: {
         badge: badge,
-        id: id
       },
       dataType: 'json'
     });
     var success = function(data) {
-      $('#merit_badges table tbody tr:last').after('<tr><td>' + data.name + '</td><td>0</td>' + 0 + '</td><td>' + data.eagle_required + '</td></tr>' );
+      var mb = data.merit_badge;
+      if($('#merit_badges table tbody tr').size() > 0) {
+        $('#merit_badges table tbody tr:last').after('<tr><td>' + mb.name + '</td><td>0</td>' + 0 + '</td><td>' + mb.eagle_required + '</td></tr>' );
+      } else {
+        $('#merit_badges table tbody').append('<tr><td>' + mb.name + '</td><td>0</td>' + 0 + '</td><td>' + mb.eagle_required + '</td></tr>' );
+      }
     };
     req.done(success);
   }
