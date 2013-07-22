@@ -17,7 +17,7 @@ $(document).ready(function() {
     $('#modal_container').modal('hide');
   });
 
-  $("tr[data-link]").click(function() {
+  $("body").on('click', 'tr[data-link]', function() {
     window.location = $(this).data("link");
   });
 
@@ -43,7 +43,7 @@ $(document).ready(function() {
     });
 
     var success = function(data) {
-      $('#main_scout_list tr:last').after('<tr><td>' + data.full_name + '</td><td>' + data.age + '</td></tr>');
+      $('#main_scout_list tr:last').after('<tr data-link="/scouts/' + data.id + '/edit"><td>' + data.full_name + '</td><td>' + data.age + '</td></tr>');
     };
 
     req.done(success);
