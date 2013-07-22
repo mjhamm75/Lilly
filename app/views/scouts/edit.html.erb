@@ -23,7 +23,7 @@
         </thead>
         <tbody>
           <% @scout.merit_badges.each do |badge|%>
-          <tr>
+          <tr data-link="<%= edit_scout_merit_badge_path(@scout, badge) %>">
             <td>
               <% if badge.eagle_required == true %>
               <i class="icon-ok"></i>
