@@ -223,6 +223,6 @@ end
 Scout.all.each do |scout|
   if scout.ranks.count == 0
     scout.ranks << Rank.all
-    puts scout.name + " ranks added"
   end
+  puts "Ranks added to each scout"
 end
