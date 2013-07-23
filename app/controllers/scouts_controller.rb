@@ -13,6 +13,7 @@ class ScoutsController < ApplicationController
 
   def new
   	@scout = Scout.new(:first_name => params[:first_name], :last_name => params[:last_name], :birthdate => params[:birthday])
+      @scout.ranks << Rank.all
   	 respond_to do |format|
   	 	if @scout.save
           format.html { redirect_to @scout, notice: 'Scout was successfully created.' }

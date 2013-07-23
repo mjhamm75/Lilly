@@ -2,11 +2,28 @@
   <h1 data-scout-id="<%= @scout.id %>"><%= @scout.full_name %></h1>
   <div id="advancements" class="hero-unit">
     <h2>Advancements</h2>
-    <div class="empty">Need to work on Advancements</div>
+    <div class="empty">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @scout.ranks.each do |rank|%>
+          <tr>
+            <td><%= rank.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
   <div id="merit_badges" class="hero-unit">
     <h2>Merit Badges</h2>
-    <!-- <div class="empty">Boo, no merit badges yet</div> -->
+    <% if @scout.merit_badges.count == 0 %>
+    <div class="empty">Boo, no merit badges yet</div>
+    <% else %>
     <div class="empty">
       <table class="table table-striped">
         <thead>
@@ -36,6 +53,7 @@
         </tbody>
       </table>
     </div>
+    <% end %>
     <a href="#" class="btn btn-success" id="add_merit_badge">Add</a>
   </div>
   <%= button_to 'Remove Scout', @scout, :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
