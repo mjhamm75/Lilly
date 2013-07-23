@@ -16,7 +16,6 @@ class MeritBadgesController < ApplicationController
   def edit
     @scout = set_scout
     @badge = set_merit_badge
-    puts @badge
   end
 
   def destroy

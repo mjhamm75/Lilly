@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <% @scout.ranks.each do |rank|%>
-          <tr>
+          <tr data-link="<%= edit_scout_rank_path(@scout, rank) %>">
             <td><%= rank.name %></td>
           </tr>
           <% end %>
