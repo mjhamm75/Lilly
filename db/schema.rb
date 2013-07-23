@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723005158) do
+ActiveRecord::Schema.define(version: 20130723100142) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "merit_badge_id"
     t.integer  "requirement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rank_id"
   end
 
   create_table "advancements", force: true do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20130723005158) do
     t.integer  "merit_badge_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rank_id"
   end
 
   create_table "merit_badges", force: true do |t|
@@ -32,6 +34,13 @@ ActiveRecord::Schema.define(version: 20130723005158) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "eagle_required", default: false
+  end
+
+  create_table "ranks", force: true do |t|
+    t.string   "name"
+    t.integer  "ordinal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "requirements", force: true do |t|

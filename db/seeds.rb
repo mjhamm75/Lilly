@@ -206,3 +206,16 @@ if MeritBadge.find_by_name("Swimming").eagle_required == false
   puts 15
   mb.save
 end
+
+if Rank.all.count < 1
+  Rank.create([
+    {name: "Boy Scout", ordinal: 1},
+    {name: "Tenderfoot", ordinal: 2},
+    {name: "Second Class", ordinal: 3},
+    {name: "First Class", ordinal: 4},
+    {name: "Star", ordinal: 5},
+    {name: "LIfe", ordinal: 6},
+    {name: "Eagle", ordinal: 7},
+    ])
+    puts "Ranks created"
+end
