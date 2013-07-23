@@ -219,3 +219,10 @@ if Rank.all.count < 1
     ])
     puts "Ranks created"
 end
+
+Scout.all.each do |scout|
+  if scout.ranks.count == 0
+    scout.ranks << Rank.all
+    puts scout.name + " ranks added"
+  end
+end
