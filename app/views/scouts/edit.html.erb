@@ -10,8 +10,8 @@
           </tr>
         </thead>
         <tbody>
-          <% @scout.ranks.each do |rank|%>
-          <tr data-link="<%= edit_scout_rank_path(@scout, rank) %>">
+          <% @scout.advancements.ranks.each do |rank|%>
+          <tr data-link="<%= edit_scout_advancement_path(@scout, rank) %>">
             <td><%= rank.name %></td>
           </tr>
           <% end %>
@@ -21,7 +21,7 @@
   </div>
   <div id="merit_badges" class="hero-unit">
     <h2>Merit Badges</h2>
-    <% if @scout.merit_badges.count == 0 %>
+    <% if @scout.advancements.merit_badges.count == 0 %>
     <div class="empty">Boo, no merit badges yet</div>
     <% else %>
     <div class="empty">
@@ -39,8 +39,8 @@
           </tr>
         </thead>
         <tbody>
-          <% @scout.merit_badges.each do |badge|%>
-          <tr data-link="<%= edit_scout_merit_badge_path(@scout, badge) %>">
+          <% @scout.advancements.merit_badges.each do |badge|%>
+          <tr data-link="<%= edit_scout_advancement_path(@scout, badge) %>">
             <td>
               <% if badge.eagle_required == true %>
               <i class="icon-ok"></i>

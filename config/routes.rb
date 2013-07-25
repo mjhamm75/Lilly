@@ -1,7 +1,6 @@
 Lilly::Application.routes.draw do
   resources :scouts do
-    resources :merit_badges, only: [:new, :edit, :destroy]
-    resources :ranks, only: [:edit]
+    resources :advancements
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -13,7 +13,7 @@ class ScoutsController < ApplicationController
 
   def new
   	@scout = Scout.new(:first_name => params[:first_name], :last_name => params[:last_name], :birthdate => params[:birthday])
-      @scout.ranks << Rank.all
+      @scout.advancements << Rank.all
   	 respond_to do |format|
   	 	if @scout.save
           format.html { redirect_to @scout, notice: 'Scout was successfully created.' }
@@ -48,7 +48,7 @@ class ScoutsController < ApplicationController
 
   def show
     mb = MeritBadge.find_by_name(params[:badge])
-    @scout.advancements.create(merit_badge: mb)
+    @scout.advancements << mb
     respond_to do |format|
       format.json {
         render :json => {

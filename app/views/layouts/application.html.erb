@@ -27,7 +27,7 @@
   <form class="modal-body">
     <div class="chosen">
     <select class="chzn-select" id="chzn-select">
-      <% MeritBadge.all.each do |mb| %>
+      <% MeritBadge.alpha.all.each do |mb| %>
       <option><%= mb.name %></option>
       <% end %>
     </select>

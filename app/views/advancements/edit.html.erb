@@ -1,0 +1,11 @@
+<h1><%= @rank.name %></h1>
+<table>
+
+  <tr>
+
+  </tr>
+
+</table>
+<% if @rank.type == "MeritBadge" %>
+<%= button_to 'Delete Merit Badge', scout_advancement_path(@scout, @rank), :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
+<% end %>

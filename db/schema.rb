@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723100142) do
+ActiveRecord::Schema.define(version: 20130725104112) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "merit_badge_id"
@@ -19,33 +19,26 @@ ActiveRecord::Schema.define(version: 20130723100142) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rank_id"
+    t.boolean  "completed",       default: false
+    t.string   "parent_initials"
+    t.string   "leader_initials"
+    t.date     "date_completed"
+    t.integer  "advancement_id"
   end
 
   create_table "advancements", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "scout_id"
-    t.integer  "merit_badge_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "rank_id"
-  end
-
-  create_table "merit_badges", force: true do |t|
+    t.integer  "requirement_id"
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "eagle_required", default: false
-  end
-
-  create_table "ranks", force: true do |t|
-    t.string   "name"
     t.integer  "ordinal"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "type"
   end
 
   create_table "requirements", force: true do |t|
     t.string   "text"
-    t.boolean  "completed"
     t.date     "date_finished"
     t.datetime "created_at"
     t.datetime "updated_at"

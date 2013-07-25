@@ -1,9 +1,0 @@
-<h1><%= @badge.name %></h1>
-<table>
-  <% @badge.requirements.each do |r| %>
-  <tr>
-    <td><%= r.text %></td>
-  </tr>
-  <% end %>
-</table>
-<%= button_to 'Delete Merit Badge', scout_merit_badge_path(@scout, @badge), :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
