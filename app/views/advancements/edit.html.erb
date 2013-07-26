@@ -2,7 +2,9 @@
 <table>
   <% @rank.requirements.each do |req| %>
   <tr>
-    <%= req.text %>
+      <td>
+        <%= req.requirement %>
+      </td>
   </tr>
   <% end %>
 
