@@ -220,9 +220,37 @@ if Rank.all.count < 1
     puts "Ranks created"
 end
 
-Scout.all.each do |scout|
-  if scout.ranks.count == 0
-    scout.ranks << Rank.all
-  end
-  puts "Ranks added to each scout"
+# Scout.all.each do |scout|
+#   if scout.ranks.count == 0
+#     scout.ranks << Rank.all
+#   end
+#   puts "Ranks added to each scout"
+# end
+
+if MeritBadge.find_by_name("American Business").requirements.count == 0
+  r = Requirement.create([
+    {requirement: "Do the following:"},
+    {requirement: "Explain four features of the free enterprise system in the United States. Tell its benefits and responsibilities. Describe the difference between freedom and license. Tell how the Scout Oath and Law apply to business and free enterprise."},
+    {requirement: "Describe the Industrial Revolution: Tell about the major developments that marked the start of the modern industrial era in the United States. Tell about five people who had a great influence on business or industry in the United States. Tell what each did."},
+    {requirement: "Visit a bank. Talk with one of the officers or staff. Chart the organization of the bank. Show its relationship with other banks, business and industry."},
+    {requirement: "Explain how changes in interest rates, taxes, and government spending affect the flow of money into or out of business and industry."},
+    {requirement: "Explain how a proprietorship or partnership gets its capital. Discuss and explain four ways a corporation gets its capital."},
+    {requirement: "Explain the place of profit in business."},
+    {requirement: "Name five kinds of insurance useful to business. Describe their purposes."},
+    {requirement: "Pick two or more stocks from the financial pages of a newspaper. Request the annual report or prospectus from one of the companies by writing, or visit its Web site (with your parent’s permission) to view the annual report online. Explain how a company’s annual report and prospectus can be used to help you manage your investments."},
+    {requirement: "Pretend to have bought $1,000 worth of the stocks from the company you wrote to in requirement 3a. Explain how you \"bought\" the stocks. Tell why you decided to \"buy\" stock in this company. Keep a weekly record for three months of the market value of your stocks. Show any dividends declared."},
+    {requirement: "Do ONE of the following:"},
+    {requirement: "Draw an organizational chart of a typical central labor council."},
+    {requirement: "Describe automation, union shop, open shop, collective-bargaining agreements, shop steward, business agent, and union counselor."},
+    {requirement: "Explain the part played by four federal or state agencies in labor relations."},
+    {requirement: "Run a small business involving a product or service for at least three months. First find out the need for it. For example: a newspaper route, lawn mowing, sales of things you have made or grown. Keep records showing the costs, income, and profit or loss. Report:"},
+    {requirement: "How service, friendliness, hard work, and salesmanship helped build your business."},
+    {requirement: "The benefits you and others received because you were in business."},
+    {requirement: "NOTE: Comparable 4-H, FFA, or Junior Achievement projects may be used for requirement 5."},
+    {requirement: "Make an oral presentation to your Scout troop about an e-commerce company. Tell about the benefits and pitfalls of doing business online, and explain the differences between a retailer and an e-commerce company. In your presentation, explain the similarities a retailer and an e-commerce company might share."},
+    {requirement: "Choose three products from your local grocery store or mall and tell your merit badge counselor how the packaging could be improved upon so that it has less impact on the environment."},
+    {requirement: "Gather information from news sources and books about a current business leader. Write a two-page biography about this person or make a short presentation to your counselor. Focus on how this person became a successful business leader."}
+    ])
+    MeritBadge.find_by_name("American Business").requirements << r
+    puts "American Business reqs created"
 end

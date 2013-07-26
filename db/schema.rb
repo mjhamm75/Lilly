@@ -11,17 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726100205) do
+ActiveRecord::Schema.define(version: 20130726103403) do
 
   create_table "advancement_requirements", force: true do |t|
-    t.integer  "merit_badge_id"
     t.integer  "requirement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rank_id"
-    t.boolean  "completed",       default: false
-    t.string   "parent_initials"
-    t.string   "leader_initials"
     t.date     "date_completed"
     t.integer  "advancement_id"
   end
@@ -38,9 +33,9 @@ ActiveRecord::Schema.define(version: 20130726100205) do
   end
 
   create_table "requirements", force: true do |t|
-    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "requirement"
   end
 
   create_table "scout_requirements", force: true do |t|
