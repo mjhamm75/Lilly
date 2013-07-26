@@ -1,9 +1,10 @@
 <h1><%= @rank.name %></h1>
 <table>
-
+  <% @rank.requirements.each do |req| %>
   <tr>
-
+    <%= req.text %>
   </tr>
+  <% end %>
 
 </table>
 <% if @rank.type == "MeritBadge" %>

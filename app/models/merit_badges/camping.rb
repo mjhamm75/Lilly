@@ -1,3 +1,0 @@
-class Camping < MeritBadge
-
-end

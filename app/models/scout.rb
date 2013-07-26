@@ -3,6 +3,7 @@ class Scout < ActiveRecord::Base
   validates :last_name, :presence => true
 
   has_many :advancements
+  has_many :scout_requirements
 
   def full_name
     self.first_name + " " + self.last_name
