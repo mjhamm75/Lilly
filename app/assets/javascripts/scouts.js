@@ -69,4 +69,10 @@ $(document).ready(function() {
     };
     req.done(success);
   }
+
+  $('body').on("click", ".checkbox", function() {
+    var req = $.ajax({
+      url: '/scouts/' + scout.id + '/scout_requirements/' + id
+    });
+  });
 });
