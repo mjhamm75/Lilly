@@ -71,8 +71,11 @@ $(document).ready(function() {
   }
 
   $('body').on("click", ".checkbox", function() {
+    var scout_id = $('[data-scout]').data().scout;
+    var req_id = $(this).parents('[data-req]').data('req')
     var req = $.ajax({
-      url: '/scouts/' + scout.id + '/scout_requirements/' + id
+      url: '/scouts/' + scout_id + '/scout_requirements/' + req_id + '/edit'
     });
+    req.done();
   });
 });
