@@ -1,14 +1,31 @@
 <h1><%= @rank.name %></h1>
-<table>
-  <% @rank.requirements.each do |req| %>
-  <tr>
-      <td>
-        <%= req.requirement %>
-      </td>
-  </tr>
+<div class="container">
+  <div class="table" data-scout="<%= params[:scout_id] %>">
+  <% @rank.advancement_requirements.order_asc.each do |req| %>
+    <div class="row" data-req="<%= req.requirement_id %>">
+      <% if req.label != nil && req.label.is_number? %>
+    <div class="cell">
+      <%= req.label %>.
+    </div>
+    <% else %>
+        <div class="cell letter">
+      <%= req.label %>
+        </div>
+    <% end %>
+      <div class="cell">
+        <%= req.requirement.requirement %>
+      </div>
+      <div class="cell">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">
+          </label>
+        </div>
+      </div>
+    </div>
   <% end %>
-
-</table>
+  </div>
+</div>
 <% if @rank.type == "MeritBadge" %>
 <%= button_to 'Delete Merit Badge', scout_advancement_path(@scout, @rank), :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
 <% end %>

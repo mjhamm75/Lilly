@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726103403) do
+ActiveRecord::Schema.define(version: 20130727133219) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "requirement_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20130726103403) do
     t.datetime "updated_at"
     t.date     "date_completed"
     t.integer  "advancement_id"
+    t.integer  "ord"
+    t.string   "label"
   end
 
   create_table "advancements", force: true do |t|
