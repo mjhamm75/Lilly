@@ -1,6 +1,7 @@
 Lilly::Application.routes.draw do
   resources :scouts do
     resources :advancements
+    resources :scout_requirements
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
