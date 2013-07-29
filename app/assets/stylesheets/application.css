@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+
+.table {
+  display: table;
+}
+.row {
+  display: table-row;
+}
+.cell {
+  display: table-cell;
+  padding-right: 8px;
+}
+.letter {
+  padding-left: 10px;
+}
+.checkbox_center {
+  text-align: center;
+  vertical-align: center
+}
