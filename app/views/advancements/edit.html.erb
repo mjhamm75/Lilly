@@ -1,7 +1,7 @@
 <h1><%= @rank.name %></h1>
 <div class="container">
   <div class="table" data-scout="<%= params[:scout_id] %>">
-  <% @rank.advancement_requirements.order_asc.each do |req| %>
+  <% @rank.advancement_requirements.order('ord ASC').each do |req| %>
     <div class="row" data-req="<%= req.requirement_id %>">
       <% if req.label != nil && req.label.is_number? %>
     <div class="cell">
