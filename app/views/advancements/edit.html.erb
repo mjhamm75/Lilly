@@ -1,7 +1,7 @@
-<h1><%= @rank.name %></h1>
+<h1><%= @advancement.name %></h1>
 <div class="container">
   <div class="table" data-scout="<%= params[:scout_id] %>">
-  <% @rank.advancement_requirements.order('ord ASC').each do |req| %>
+  <% @advancement.advancement_requirements.order('ord ASC').each do |req| %>
     <div class="row" data-req="<%= req.requirement_id %>">
       <% if req.label != nil && req.label.is_number? %>
     <div class="cell">
@@ -26,6 +26,6 @@
   <% end %>
   </div>
 </div>
-<% if @rank.type == "MeritBadge" %>
-<%= button_to 'Delete Merit Badge', scout_advancement_path(@scout, @rank), :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
+<% if @advancement.type == "MeritBadge" %>
+<%= button_to 'Delete Merit Badge', scout_advancement_path(@scout, @advancement), :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
 <% end %>
