@@ -1,7 +1,7 @@
 class AdvancementsController < ApplicationController
   def edit
     @scout = set_scout
-    @rank = set_advancement
+    @advancement = set_advancement
   end
 
   def destroy
@@ -16,7 +16,7 @@ class AdvancementsController < ApplicationController
 
   def set_advancement
     @scout = set_scout
-    @rank = @scout.advancements.find_by_id(params[:id])
+    @advancement = @scout.advancements.find_by_id(params[:id])
   end
 
   def set_scout
