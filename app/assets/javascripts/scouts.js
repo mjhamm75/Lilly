@@ -68,11 +68,16 @@ $(document).ready(function() {
       }
     };
     req.done(success);
-  }
+  };
+
+  $('body').on('click', '.row', function() {
+    var scout_id = $('[data-scout]').data().scout;
+    alert(scout_id);
+  });
 
   $('body').on("click", ".checkbox", function() {
     var scout_id = $('[data-scout]').data().scout;
-    var req_id = $(this).parents('[data-req]').data('req')
+    var req_id = $(this).parents('[data-req]').data('req');
     var req = $.ajax({
       url: '/scouts/' + scout_id + '/scout_requirements/' + req_id + '/edit'
     });
