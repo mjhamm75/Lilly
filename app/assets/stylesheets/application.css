@@ -19,6 +19,9 @@
 .row {
   display: table-row;
 }
+.row:hover {
+  background-color: lightgrey;
+}
 .cell {
   display: table-cell;
   padding-right: 8px;
