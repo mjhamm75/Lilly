@@ -1,5 +1,5 @@
 class AdvancementRequirementsController < ApplicationController
   def index
-    ar = AdvancementRequirement.all
+    @ar = AdvancementRequirement.all
   end
 end

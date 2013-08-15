@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130812110135) do
+ActiveRecord::Schema.define(version: 20130814095934) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "requirement_id"
@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20130812110135) do
     t.integer  "advancement_id"
     t.integer  "ord"
     t.string   "label"
-    t.boolean  "has_options",    default: false
-    t.integer  "number_options"
+    t.string   "owner"
+    t.boolean  "has_multiple"
+    t.integer  "reqs_needed"
+    t.integer  "reqs_count"
   end
 
   create_table "advancements", force: true do |t|
