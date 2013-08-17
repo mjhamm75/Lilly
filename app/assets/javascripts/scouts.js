@@ -8,10 +8,10 @@ $(document).ready(function() {
 
   $('#complete').on('click', function(e) {
     e.preventDefault();
-    if(this.id === "complete_add_new_scout") {
+    if (this.id === "complete_add_new_scout") {
       add_new_scout();
     }
-    if(this.id === "complete_add_merit_badge") {
+    if (this.id === "complete_add_merit_badge") {
       add_new_merit_badge();
     }
     $('#modal_container').modal('hide');
@@ -38,7 +38,11 @@ $(document).ready(function() {
   var add_new_scout = function() {
     var req = $.ajax({
       url: '/scouts/new',
-      data: { first_name: $('#first_name').val(), last_name: $('#last_name').val(), birthday: $("#birthdate").val()},
+      data: {
+        first_name: $('#first_name').val(),
+        last_name: $('#last_name').val(),
+        birthday: $("#birthdate").val()
+      },
       dataType: 'json'
     });
 
@@ -61,22 +65,14 @@ $(document).ready(function() {
     });
     var success = function(data) {
       var mb = data.merit_badge;
-      if($('#merit_badges table tbody tr').size() > 0) {
-        $('#merit_badges table tbody tr:last').after('<tr><td><i class="icon-ok"></i></td><td>' + mb.name + '</td><td>0</td>' + 0 + '</td></tr>' );
+      if ($('#merit_badges table tbody tr').size() > 0) {
+        $('#merit_badges table tbody tr:last').after('<tr><td><i class="icon-ok"></i></td><td>' + mb.name + '</td><td>0</td>' + 0 + '</td></tr>');
       } else {
-        $('#merit_badges table tbody').append('<tr><td><i class="icon-ok"></i></td><td>' + mb.name + '</td><td>0</td>' + 0 + '</td></tr>' );
+        $('#merit_badges table tbody').append('<tr><td><i class="icon-ok"></i></td><td>' + mb.name + '</td><td>0</td>' + 0 + '</td></tr>');
       }
     };
     req.done(success);
   };
-
-  $('body').on('click', '.row', function() {
-    var scout_id = $('[data-scout]').data().scout;
-    var advancement_id = $('[data-advancement]').data().advancement;
-    var requirement = $('[data-req]').data().req;
-    debugger;
-
-  });
 
   $('body').on("click", ".checkbox", function() {
     var scout_id = $('[data-scout]').data().scout;
@@ -85,5 +81,28 @@ $(document).ready(function() {
       url: '/scouts/' + scout_id + '/scout_requirements/' + req_id + '/edit'
     });
     req.done();
+  });
+
+  $('body').on('click', '.row', function() {
+    var $row = $(this);
+    var id = $row.parent().data().scout;
+    var requirement_id = $row.data().req;
+    var req = $.ajax({
+      url: '/scouts/' + id + '/reqs',
+      data: {
+        requirement_id: requirement_id
+      },
+      type: 'PUT'
+    });
+    var success = function() {
+      var $div = $row.children().last();
+      var length = $div.find('img').length;
+      if(length === 1) {
+        $div.find('img').remove();
+      } else {
+        $div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
+      }
+    };
+    req.done(success);
   });
 });

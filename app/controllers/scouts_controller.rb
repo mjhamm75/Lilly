@@ -8,20 +8,20 @@ class ScoutsController < ApplicationController
   end
 
   def create
-  	Scout.new
+    Scout.new
   end
 
   def new
-  	@scout = Scout.new(:first_name => params[:first_name], :last_name => params[:last_name], :birthdate => params[:birthday])
-      @scout.advancements << Rank.all
-  	 respond_to do |format|
-  	 	if @scout.save
-          format.html { redirect_to @scout, notice: 'Scout was successfully created.' }
-          format.json { render json: @scout, :status => :ok}
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @scout.errors, status: :unprocessable_entity }
-        end
+    @scout = Scout.new(:first_name => params[:first_name], :last_name => params[:last_name], :birthdate => params[:birthday])
+    @scout.advancements << Rank.all
+    respond_to do |format|
+      if @scout.save
+        format.html { redirect_to @scout, notice: 'Scout was successfully created.' }
+        format.json { render json: @scout, :status => :ok}
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @scout.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -30,10 +30,10 @@ class ScoutsController < ApplicationController
     respond_to do |format|
       format.html { render 'edit' }
       format.json {
-         render :json => {
-            :scout => @scout,
-            :merit_badges => @scout.merit_badges
-         } , :status => :ok
+        render :json => {
+          :scout => @scout,
+          :merit_badges => @scout.merit_badges
+        } , :status => :ok
       }
     end
   end
@@ -49,11 +49,30 @@ class ScoutsController < ApplicationController
   def show
     mb = MeritBadge.find_by_name(params[:badge])
     @scout.advancements << mb
+    @scout.requirements << mb.requirements
     respond_to do |format|
       format.json {
         render :json => {
           :merit_badge => mb
         }, :status => :ok
+      }
+    end
+  end
+
+  def reqs
+    @scout = Scout.find(params[:scout_id])
+    reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
+    if(reqs[0].completed_date == nil)
+      reqs[0].update_attributes(:completed_date => Date.today)
+    else
+      reqs[0].update_attributes(:completed_date => nil)
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+
+        } , :status => :ok
       }
     end
   end
