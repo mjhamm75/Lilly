@@ -1,6 +1,6 @@
 <h1><%= @advancement.name %></h1>
 <div class="container">
-  <div class="table" data-scout="<%= params[:scout_id] %>">
+  <div class="table" data-scout="<%= params[:scout_id] %>" data-advancement="<%= params[:id] %>">
     <% @advancement.advancement_requirements.order('ord ASC').each do |req| %>
     <div class="row" data-req="<%= req.requirement_id %>">
       <% if req.label != nil && req.label.is_number? %>
