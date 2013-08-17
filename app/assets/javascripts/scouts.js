@@ -72,7 +72,10 @@ $(document).ready(function() {
 
   $('body').on('click', '.row', function() {
     var scout_id = $('[data-scout]').data().scout;
-    alert(scout_id);
+    var advancement_id = $('[data-advancement]').data().advancement;
+    var requirement = $('[data-req]').data().req;
+    debugger;
+
   });
 
   $('body').on("click", ".checkbox", function() {
