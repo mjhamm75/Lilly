@@ -1,4 +1,4 @@
 class ScoutRequirement < ActiveRecord::Base
-  has_many :scouts
-  has_many :requirements
+  belongs_to :scout
+  belongs_to :requirement
 end

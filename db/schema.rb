@@ -11,45 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814095934) do
+ActiveRecord::Schema.define(version: 20130816130601) do
 
   create_table "advancement_requirements", force: true do |t|
+    t.integer  "advancement_id"
     t.integer  "requirement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date_completed"
-    t.integer  "advancement_id"
-    t.integer  "ord"
-    t.string   "label"
-    t.string   "owner"
-    t.boolean  "has_multiple"
-    t.integer  "reqs_needed"
-    t.integer  "reqs_count"
   end
 
   create_table "advancements", force: true do |t|
+    t.string   "name"
+    t.boolean  "eagle_required"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "scout_id"
-    t.integer  "requirement_id"
-    t.string   "name"
-    t.boolean  "eagle_required", default: false
-    t.integer  "ordinal"
-    t.string   "type"
   end
 
   create_table "requirements", force: true do |t|
+    t.text     "requirement"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "requirement"
+  end
+
+  create_table "scout_advancements", force: true do |t|
+    t.integer  "scout_id"
+    t.integer  "advancement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "scout_requirements", force: true do |t|
     t.integer  "scout_id"
     t.integer  "requirement_id"
-    t.date     "date_completed"
-    t.string   "parent_initial"
-    t.string   "leader_initial"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
