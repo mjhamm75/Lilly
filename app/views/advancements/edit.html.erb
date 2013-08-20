@@ -2,7 +2,7 @@
 <%= button_to 'Go Back', edit_scout_path(@scout), :method => :get, :class => "btn btn-primary" %>
 <div class="container">
   <div class="table" data-scout="<%= params[:scout_id] %>" data-advancement="<%= params[:id] %>">
-    <% @advancement.advancement_requirements.each do |req| %>
+    <% @advancement.advancement_requirements.order('ord asc').each do |req| %>
     <div class="row" data-req="<%= req.requirement_id %>">
       <% if req.label != nil && req.label.is_number? %>
       <div class="cell">
