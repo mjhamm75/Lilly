@@ -87,20 +87,24 @@ $(document).ready(function() {
     var $row = $(this);
     var id = $row.parent().data().scout;
     var requirement_id = $row.data().req;
+    var has_multiple = $row.data().multiple;
     var req = $.ajax({
       url: '/scouts/' + id + '/reqs',
       data: {
-        requirement_id: requirement_id
+        requirement_id: requirement_id,
+        has_multiple: has_multiple
       },
       type: 'PUT'
     });
-    var success = function() {
-      var $div = $row.children().last();
-      var length = $div.find('img').length;
-      if(length === 1) {
-        $div.find('img').remove();
-      } else {
-        $div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
+    var success = function(data) {
+      if (data.complete === true) {
+        var $div = $row.children().last();
+        var length = $div.find('img').length;
+        if (length === 1) {
+          $div.find('img').remove();
+        } else {
+          $div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
+        }
       }
     };
     req.done(success);
