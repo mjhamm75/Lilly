@@ -60,12 +60,14 @@ class ScoutsController < ApplicationController
   end
 
   def reqs
-    @scout = Scout.find(params[:scout_id])
-    reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
-    if(reqs[0].completed_date == nil)
-      reqs[0].update_attributes(:completed_date => Date.today)
-    else
-      reqs[0].update_attributes(:completed_date => nil)
+    if(params[:has_multiple] != true)
+      @scout = Scout.find(params[:scout_id])
+      reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
+      if(reqs[0].completed_date == nil)
+        reqs[0].update_attributes(:completed_date => Date.today)
+      else
+        reqs[0].update_attributes(:completed_date => nil)
+      end
     end
 
     respond_to do |format|
