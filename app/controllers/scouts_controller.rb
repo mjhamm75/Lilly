@@ -73,7 +73,7 @@ class ScoutsController < ApplicationController
     respond_to do |format|
       format.json {
         render :json => {
-
+          complete: true
         } , :status => :ok
       }
     end
