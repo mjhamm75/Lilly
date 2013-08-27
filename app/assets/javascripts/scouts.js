@@ -85,14 +85,20 @@ $(document).ready(function() {
 
   $('body').on('click', '.row', function() {
     var $row = $(this);
-    var id = $row.parent().data().scout;
+    var scout_id = $row.parent().data().scout;
     var requirement_id = $row.data().req;
-    var has_multiple = $row.data().multiple;
+    var parent = $row.data().parent;
+    var children = $row.data().children;
+    var children_count = $row.data().childrenCount;
+    var advancement_id = $row.parent('.table').data().advancement;
     var req = $.ajax({
-      url: '/scouts/' + id + '/reqs',
+      url: '/scouts/' + scout_id + '/reqs',
       data: {
         requirement_id: requirement_id,
-        has_multiple: has_multiple
+        parent: parent,
+        children: children,
+        advancement_id: advancement_id,
+        children_count: children_count
       },
       type: 'PUT'
     });
@@ -105,6 +111,8 @@ $(document).ready(function() {
         } else {
           $div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
         }
+      } else {
+        alert('You need to complete the  children');
       }
     };
     req.done(success);

@@ -60,20 +60,33 @@ class ScoutsController < ApplicationController
   end
 
   def reqs
-    if(params[:has_multiple] != true)
-      @scout = Scout.find(params[:scout_id])
-      reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
-      if(reqs[0].completed_date == nil)
-        reqs[0].update_attributes(:completed_date => Date.today)
-      else
-        reqs[0].update_attributes(:completed_date => nil)
+    children = params[:children].split('#')
+    parent = params[:parent]
+    if(parent)
+      complete = true
+      check_children(children)
+    end
+    if(children)
+      complete = false
+      check_parent(parent)
+    end
+    if(!parent && !children)
+      binding.pry
+      if(params[:has_multiple] != true)
+        @scout = Scout.find(params[:scout_id])
+        reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
+        if(reqs[0].completed_date == nil)
+          reqs[0].update_attributes(:completed_date => Date.today)
+        else
+          reqs[0].update_attributes(:completed_date => nil)
+        end
       end
     end
 
     respond_to do |format|
       format.json {
         render :json => {
-          complete: true
+          complete: complete
         } , :status => :ok
       }
     end
@@ -81,5 +94,14 @@ class ScoutsController < ApplicationController
 
   def set_scout
     @scout = Scout.find(params[:id])
+  end
+
+  def check_children(children)
+    children.each do |child|
+    end
+  end
+
+  def check_parent(parent)
+    puts parent
   end
 end
