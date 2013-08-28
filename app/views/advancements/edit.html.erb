@@ -3,7 +3,7 @@
 <div class="container">
   <div class="table" data-scout="<%= params[:scout_id] %>" data-advancement="<%= params[:id] %>">
     <% @advancement.advancement_requirements.order('ord asc').each do |req| %>
-    <div class="row" data-req="<%= req.requirement_id %>">
+    <div class="row" data-req="<%= req.requirement_id %>" data-children="<%= req.children %>" data-parent="<%= req.parent %>", data-childrenCount="<%= req.children_count %>">
       <% if req.label != nil && req.label.is_number? %>
       <div class="cell">
         <%= req.label %>.

@@ -61,34 +61,25 @@ class ScoutsController < ApplicationController
   end
 
   def reqs
-    @requirements = Scout.find(params[:scout_id]).scout_requirements.find(Advancement.find(params[:advancement_id]).advancement_requirements.pluck(:requirement_id))
-    if(!params[:children].empty?)
-      # complete = false
-      # children = params[:children].split('#')
-      # binding.pry
-      # check_children(children)
-    else(!params[:parent].empty?)
-      check_parent()
-      # complete = true
-      # parent = params[:parent]
-      # check_parent(parent)
-    end
-    if(!parent && !children)
-      if(params[:has_multiple] != true)
-        @scout = Scout.find(params[:scout_id])
-        reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
-        if(reqs[0].completed_date == nil)
-          reqs[0].update_attributes(:completed_date => Date.today)
-        else
-          reqs[0].update_attributes(:completed_date => nil)
-        end
+    if(params[:parent].empty? && params[:children].empty?)
+      puts "Solo"
+    elsif(params[:parent].empty?)
+      puts"Parent"
+      puts params
+    elsif (params[:children].empty?)
+      puts"Child"
+      puts params
+      complete_requirement(params[:requirement_id])
+      parent_finished = check_parent
+      if parent_finished
+        req_complete = params[:parent]
       end
     end
 
     respond_to do |format|
       format.json {
         render :json => {
-          complete: complete
+          req_complete: req_complete
         } , :status => :ok
       }
     end
@@ -99,20 +90,7 @@ class ScoutsController < ApplicationController
   end
 
   def check_children(children)
-    binding.pry
     children.each do |child|
     end
-  end
-
-  def check_parent
-    parent_req = get_requirement(@requirements, params[:parent])
-    binding.pry
-    parent = Advancement.find(params[:advancement_id]).advancement_requirements.find(parent_req)
-    binding.pry
-    children_reqs = parent.children.split("#")
-    binding.pry
-    children_needed = parent.children_count
-    children_completed = children_completed(children_reqs)
-    binding.pry
   end
 end
