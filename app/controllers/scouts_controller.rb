@@ -1,4 +1,5 @@
 class ScoutsController < ApplicationController
+  include ApplicationHelper
   before_action :set_scout, only: [:show, :edit, :update, :destroy]
 
   # GET /scouts
@@ -60,18 +61,19 @@ class ScoutsController < ApplicationController
   end
 
   def reqs
-    children = params[:children].split('#')
-    parent = params[:parent]
-    if(parent)
-      complete = true
-      check_children(children)
-    end
-    if(children)
-      complete = false
-      check_parent(parent)
+    @requirements = Scout.find(params[:scout_id]).scout_requirements.find(Advancement.find(params[:advancement_id]).advancement_requirements.pluck(:requirement_id))
+    if(!params[:children].empty?)
+      # complete = false
+      # children = params[:children].split('#')
+      # binding.pry
+      # check_children(children)
+    else(!params[:parent].empty?)
+      check_parent()
+      # complete = true
+      # parent = params[:parent]
+      # check_parent(parent)
     end
     if(!parent && !children)
-      binding.pry
       if(params[:has_multiple] != true)
         @scout = Scout.find(params[:scout_id])
         reqs = @scout.scout_requirements.where(:requirement_id => params[:requirement_id])
@@ -97,11 +99,20 @@ class ScoutsController < ApplicationController
   end
 
   def check_children(children)
+    binding.pry
     children.each do |child|
     end
   end
 
-  def check_parent(parent)
-    puts parent
+  def check_parent
+    parent_req = get_requirement(@requirements, params[:parent])
+    binding.pry
+    parent = Advancement.find(params[:advancement_id]).advancement_requirements.find(parent_req)
+    binding.pry
+    children_reqs = parent.children.split("#")
+    binding.pry
+    children_needed = parent.children_count
+    children_completed = children_completed(children_reqs)
+    binding.pry
   end
 end
