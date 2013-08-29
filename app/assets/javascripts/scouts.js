@@ -120,10 +120,10 @@ $(document).ready(function() {
         }
       }
       if (data.parent_complete === null) {
-        var parent = $('[data-req=' + $row.data().parent + ']');
-        var imgDiv = parent.children().last();
+        var parentDiv = $('[data-req=' + $row.data().parent + ']');
+        var imgDiv = parentDiv.children().last();
         if (imgDiv.find('img').length === 1) {
-          imgDiv.remove();
+          imgDiv.find('img').remove();
         }
       }
     };
