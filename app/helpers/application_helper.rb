@@ -15,7 +15,6 @@ module ApplicationHelper
     count = 0
     children.each do |child|
       kid = Scout.first.scout_requirements.find(child)
-      binding.pry
       if(kid.completed_date != nil)
         count = count + 1
       end

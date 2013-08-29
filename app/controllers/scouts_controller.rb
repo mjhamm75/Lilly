@@ -68,18 +68,22 @@ class ScoutsController < ApplicationController
       puts params
     elsif (params[:children].empty?)
       puts"Child"
-      puts params
       complete_requirement(params[:requirement_id])
+      req_complete = true
       parent_finished = check_parent
       if parent_finished
-        req_complete = params[:parent]
+        parent_complete = true
+        Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => Date.today)
+      else
+        Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => nil)
       end
     end
 
     respond_to do |format|
       format.json {
         render :json => {
-          req_complete: req_complete
+          req_complete: req_complete,
+          parent_complete: parent_complete
         } , :status => :ok
       }
     end

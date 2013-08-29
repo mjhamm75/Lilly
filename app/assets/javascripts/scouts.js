@@ -103,7 +103,7 @@ $(document).ready(function() {
       type: 'PUT'
     });
     var success = function(data) {
-      if (data.complete === true) {
+      if (data.req_complete === true) {
         var $div = $row.children().last();
         var length = $div.find('img').length;
         if (length === 1) {
@@ -111,8 +111,20 @@ $(document).ready(function() {
         } else {
           $div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
         }
-      } else {
-        alert('You need to complete the  children');
+      }
+      if (data.parent_complete === true) {
+        var parent = $('[data-req=' + $row.data().parent + ']');
+        var imgDiv = parent.children().last();
+        if (imgDiv.find('img').length === 0) {
+          imgDiv.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
+        }
+      }
+      if (data.parent_complete === null) {
+        var parent = $('[data-req=' + $row.data().parent + ']');
+        var imgDiv = parent.children().last();
+        if (imgDiv.find('img').length === 1) {
+          imgDiv.remove();
+        }
       }
     };
     req.done(success);
