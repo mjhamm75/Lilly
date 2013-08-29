@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819110943) do
+ActiveRecord::Schema.define(version: 20130826094508) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "advancement_id"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 20130819110943) do
     t.datetime "updated_at"
     t.string   "label"
     t.integer  "ord"
-    t.boolean  "has_multiple",   default: false
+    t.string   "children"
+    t.integer  "children_count"
+    t.integer  "parent"
   end
 
   create_table "advancements", force: true do |t|
