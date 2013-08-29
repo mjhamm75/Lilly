@@ -291,7 +291,7 @@ if MeritBadge.find_by_name("American Business").requirements.count == 0
     elsif(req.requirement.internal_id == 9)
       req.update_attributes(:label => "e", :ord => 9, :parent => 4)
     elsif(req.requirement.internal_id == 10)
-      req.update_attributes(:label => "3", :ord => 10, :children => "10#11", :children_count => 2)
+      req.update_attributes(:label => "3", :ord => 10, :children => "11#12", :children_count => 2)
     elsif(req.requirement.internal_id == 11)
       req.update_attributes(:label => "a", :ord => 11, :parent => 10)
     elsif(req.requirement.internal_id == 12)
