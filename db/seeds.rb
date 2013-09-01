@@ -324,3 +324,45 @@ if MeritBadge.find_by_name("American Business").requirements.count == 0
   end
   puts "Updated American Business ar's"
 end
+
+if MeritBadge.find_by_name("American Cultures").requirements.count == 0
+  r = Requirement.create([
+                           {requirement: "Do TWO of the following, choosing a different group for each:", internal_id: 25},
+                           {requirement:  "Go to a festival, celebration, or other event identified with one of the groups. Report on what you see and learn.", internal_id: 26},
+                           {requirement:  "Go to a place of worship, school, or other institution identified with one of the groups. Report on what you see and learn.", internal_id: 27},
+                           {requirement:  "Talk with a person from one of the groups about the heritage and traditions of the group. Report on what you learn.", internal_id: 28},
+                           {requirement:  "Learn a song, dance, poem, or story which is traditional to one group, and teach it to a group of your friends.", internal_id: 29},
+                           {requirement:  "Go to a library or museum to see a program or exhibit featuring one group's traditions. Report on what you see and learn.Imagine that one of the groups had al     ways lived alone in a city or country to which no other groups ever came. Tell what you think the city or country might be like today. Now tell what you think i     t might be like if the three groups you chose lived there at the same time.Tell about some differences between the religions and social customs of the three gro     ups. Tell about some ideas, or ways of doing things that are similar in the three groups.Tell about a contribution made to our country by three different people      each from a different racial, ethnic, or religious background.Give a talk to your Scout unit or class at school on how people from different groups have gotten      along together. Lead a discussion on what can be done to help various groups understand one another better.Per the BSA: "You should read the merit badge pamphl     et on the subject." Pamphlets (books) are at local Scout Shops and online at ScoutStuff.org."Get a signed Merit Badge application from your Scoutmaster." An onl     ine, printable Word doc file version is available.The BSA Cultural Awareness Troop Program Feature offers meeting and activity plans to include American Culture     s as one of your monthly themes.American Cultures is a rare merit badge!", internal_id: 30},
+                           {requirement:  "Imagine that one of the groups had always lived alone in a city or country to which no other groups ever came. Tell what you think the city or country might be like today. Now tell what you think it might be like if the three groups you chose lived there at the same time.", internal_id: 31},
+                           {requirement:  "Tell about some differences between the religions and social customs of the three groups. Tell about some ideas, or ways of doing things that are similar in the three groups.", internal_id: 32},
+                           {requirement:  "Tell about a contribution made to our country by three different people each from a different racial, ethnic, or religious background.", internal_id: 33},
+                           {requirement:  "Give a talk to your Scout unit or class at school on how people from different groups have gotten along together. Lead a discussion on what can be done to help various groups understand one another better.", internal_id: 34}
+  ])
+  MeritBadge.find_by_name("American Cultures").requirements << r
+  puts "American Cultures reqs created"
+
+  mb = MeritBadge.find_by_name("American Cultures").advancement_requirements.each do |req|
+    if(req.requirement.internal_id == 25)
+      req.update_attributes(:label => "1", :ord => 1,  :children => "26#27#28#29#30", :children_count => 2)
+    elsif(req.requirement.internal_id == 26)
+      req.update_attributes(:label => "a", :ord => 2, :parent => 25)
+    elsif(req.requirement.internal_id == 27)
+      req.update_attributes(:label => "b", :ord => 3, :parent => 25)
+    elsif(req.requirement.internal_id == 28)
+      req.update_attributes(:label => "c", :ord => 4, :parent => 25)
+    elsif(req.requirement.internal_id == 29)
+      req.update_attributes(:label => "d", :ord => 5, :parent => 25)
+    elsif(req.requirement.internal_id == 30)
+      req.update_attributes(:label => "e", :ord => 6, :parent => 25)
+    elsif(req.requirement.internal_id == 31)
+      req.update_attributes(:label => "2", :ord => 6)
+    elsif(req.requirement.internal_id == 32)
+      req.update_attributes(:label => "3", :ord => 6)
+    elsif(req.requirement.internal_id == 33)
+      req.update_attributes(:label => "4", :ord => 6)
+    elsif(req.requirement.internal_id == 34)
+      req.update_attributes(:label => "5", :ord => 6)
+    end
+  end
+  puts "Updated American Cultures ar's"
+end
