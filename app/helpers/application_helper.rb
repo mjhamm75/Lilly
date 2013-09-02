@@ -33,7 +33,7 @@ module ApplicationHelper
 
   def check_parent
     parent_req = get_requirement
-    parent = Advancement.find(params[:advancement_id]).advancement_requirements.find(parent_req)
+    parent = Advancement.find(params[:advancement_id]).advancement_requirements.find(params[:parent])
     children_reqs = parent.children.split("#")
     children_needed = parent.children_count
     children_completed = children_completed(children_reqs)
