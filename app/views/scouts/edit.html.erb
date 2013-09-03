@@ -47,7 +47,7 @@
               <% end %>
             </td>
             <td><%= badge.name %></td>
-            <td>0</td>
+            <td><%= @scout.scout_advancements.find(badge).percentage_complete %></td>
           </tr>
           <% end %>
         </tbody>
