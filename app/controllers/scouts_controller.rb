@@ -87,6 +87,8 @@ class ScoutsController < ApplicationController
       end
     end
 
+    update_percentage_complete
+
     respond_to do |format|
       format.json {
         render :json => {

@@ -39,4 +39,19 @@ module ApplicationHelper
     children_completed = children_completed(children_reqs)
     return children_completed >= children_needed
   end
+
+  def update_percentage_complete
+    parents = Scout.find(params[:scout_id]).advancements.find(params[:advancement_id]).advancement_requirements.where("children is NOT NULL")
+    solo = Scout.find(params[:scout_id]).advancements.find(params[:advancement_id]).advancement_requirements.where("parent is NULL and children is NULL")
+    to_be_finished = parents + solo
+    completed = 0
+    to_be_finished.each do |req|
+      req = Scout.find(params[:scout_id]).scout_requirements.find(req)
+      if req.completed_date != nil
+        completed = completed + 1
+      end
+    end
+    percentage_complete = completed.to_f / (to_be_finished.size().to_f) * 100
+    Scout.find(params[:scout_id]).scout_advancements.find(params[:advancement_id]).update_attributes(:percentage_complete => percentage_complete)
+  end
 end
