@@ -21,6 +21,7 @@
 }
 .row:hover {
   background-color: lightgrey;
+  cursor: pointer;
 }
 .cell {
   display: table-cell;
