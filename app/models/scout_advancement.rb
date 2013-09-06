@@ -5,4 +5,8 @@ class ScoutAdvancement < ActiveRecord::Base
   def percentage_remaining
     100 - self.percentage_complete
   end
+
+  def requirements_remaining
+    binding.pry
+  end
 end

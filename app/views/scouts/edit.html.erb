@@ -34,7 +34,7 @@
               Name
             </th>
             <th>
-              Remaining
+             Requirements to Complete Advancement
             </th>
           </tr>
         </thead>
@@ -47,7 +47,7 @@
               <% end %>
             </td>
             <td><%= badge.name %></td>
-            <td><%= @scout.scout_advancements.find(badge).percentage_remaining %>%</td>
+            <td><%= @scout.scout_advancements.find(badge).requirements_remaining %></td>
           </tr>
           <% end %>
         </tbody>
