@@ -52,6 +52,8 @@ module ApplicationHelper
       end
     end
     percentage_complete = completed.to_f / (to_be_finished.size().to_f) * 100
-    Scout.find(params[:scout_id]).scout_advancements.find(params[:advancement_id]).update_attributes(:percentage_complete => percentage_complete)
+    reqs_remaining = to_be_finished.size() -completed
+    # Scout.find(params[:scout_id]).scout_advancements.find(params[:advancement_id]).update_attributes(:percentage_complete => percentage_complete)
+    Scout.find(params[:scout_id]).scout_advancements.find(params[:advancement_id]).update_attributes(:reqs_remaining => reqs_remaining)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903092456) do
+ActiveRecord::Schema.define(version: 20130906091837) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "advancement_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20130903092456) do
     t.integer  "advancement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "percentage_complete", default: 0
+    t.integer  "reqs_remaining", default: 0
   end
 
   create_table "scout_requirements", force: true do |t|
