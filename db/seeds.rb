@@ -442,6 +442,39 @@ if MeritBadge.find_by_name("American Heritage").requirements.count == 0
   puts "Updated American Heritage ar's"
 end
 
+if Rank.find_by_name("Star").requirements.count == 0
+  r = Requirement.create([
+                           {requirement:  "Be active in your unit (and patrol if you are in one) for at least four months as a First Class Scout.", internal_id: 56},
+                           {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life.", internal_id: 57},
+                           {requirement:  "Earn six merit badges, including any four from the required list for Eagle.", internal_id: 58},
+                           {requirement:  "While a First Class Scout, take part in service projects totaling at least six hours of work. These projects must be approved by your Scoutmaster.", internal_id: 59},
+                           {requirement:  "While a First Class Scout, serve actively in your unit for four months in one or more of the following positions of responsibility (or carry out a unit leader-assigned leadership project to help your unit):", internal_id: 60},
+                           {requirement:  "Take part in a Scoutmaster conference.", internal_id: 61},
+                           {requirement:  "Complete your board of review.", internal_id: 62},
+  ])
+  Rank.find_by_name("Star").requirements << r
+  puts "Star reqs created"
+
+  mb = Rank.find_by_name("Star").advancement_requirements.each do |req|
+    if(req.requirement.internal_id == 56)
+      req.update_attributes(:label => "1", :ord => 1)
+    elsif(req.requirement.internal_id == 57)
+      req.update_attributes(:label => "2", :ord => 2)
+    elsif(req.requirement.internal_id == 58)
+      req.update_attributes(:label => "3", :ord => 3)
+    elsif(req.requirement.internal_id == 59)
+      req.update_attributes(:label => "4", :ord => 4)
+    elsif(req.requirement.internal_id == 60)
+      req.update_attributes(:label => "5", :ord => 5)
+    elsif(req.requirement.internal_id == 61)
+      req.update_attributes(:label => "6", :ord => 6)
+    elsif(req.requirement.internal_id == 62)
+      req.update_attributes(:label => "7", :ord => 7)
+    end
+  end
+  puts "Updated Star ar's"
+end
+
 # if MeritBadge.find_by_name("American Cultures").requirements.count == 0
 #   r = Requirement.create([
 #                            {requirement:  "Tell about a contribution made to our country by three different people each from a different racial, ethnic, or religious background.", internal_id: 33},
