@@ -1,6 +1,8 @@
 $(document).ready(function() {
   "use strict";
 
+
+
   $('#add_new_scout').on('click', function() {
     var template = $("#new_scout_modal").html();
     create_modal(template, this.id);
