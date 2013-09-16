@@ -6,14 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if Scout.all.count == 0
-  Scout.create([{
-                  first_name: "Jason",
-                  last_name: "Hamm",
-                  birthdate: "1975-03-24"
-  }])
-end
-
 if MeritBadge.all.count == 0
   MeritBadge.create([
                       { name: "American Business" },
@@ -474,6 +466,20 @@ if Rank.find_by_name("Star").requirements.count == 0
   end
   puts "Updated Star ar's"
 end
+
+Scout.all.each do |scout|
+  rank = Rank.find_by_name("Star")
+  scout.advancements << rank
+  scout.requirements << rank.requirements
+end
+
+# if Scout.all.count == 0
+#   Scout.create([{
+#                   first_name: "Jason",
+#                   last_name: "Hamm",
+#                   birthdate: "1975-03-24"
+#   }])
+# end
 
 # if MeritBadge.find_by_name("American Cultures").requirements.count == 0
 #   r = Requirement.create([
