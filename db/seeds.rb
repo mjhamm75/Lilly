@@ -214,7 +214,7 @@ if Rank.all.count < 1
                 {name: "Second Class" },
                 {name: "First Class" },
                 {name: "Star" },
-                {name: "LIfe" },
+                {name: "Life" },
                 {name: "Eagle" },
   ])
   puts "Ranks created"
@@ -467,11 +467,11 @@ if Rank.find_by_name("Star").requirements.count == 0
   puts "Updated Star ar's"
 end
 
-Scout.all.each do |scout|
-  rank = Rank.find_by_name("Star")
-  scout.advancements << rank
-  scout.requirements << rank.requirements
-end
+# Scout.all.each do |scout|
+#   rank = Rank.find_by_name("Star")
+#   scout.advancements << rank
+#   scout.requirements << rank.requirements
+# end
 
 # if Scout.all.count == 0
 #   Scout.create([{

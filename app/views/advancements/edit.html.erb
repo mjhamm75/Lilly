@@ -17,7 +17,6 @@
         <%= req.requirement.requirement %>
       </div>
       <div>
-
         <% if @scout.scout_requirements.where(:requirement_id => req.requirement_id)[0].completed_date != nil %>
           <%= image_tag("checkmark.png", size: "48x48") %>
         <% end %>

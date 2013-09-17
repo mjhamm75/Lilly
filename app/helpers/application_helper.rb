@@ -46,7 +46,7 @@ module ApplicationHelper
     to_be_finished = parents + solo
     completed = 0
     to_be_finished.each do |req|
-      req = Scout.find(params[:scout_id]).scout_requirements.find(req)
+      req = Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => req.requirement_id).first
       if req.completed_date != nil
         completed = completed + 1
       end
@@ -54,6 +54,7 @@ module ApplicationHelper
     percentage_complete = completed.to_f / (to_be_finished.size().to_f) * 100
     reqs_remaining = to_be_finished.size() -completed
     # Scout.find(params[:scout_id]).scout_advancements.find(params[:advancement_id]).update_attributes(:percentage_complete => percentage_complete)
+    binding.pry
     Scout.find(params[:scout_id]).scout_advancements.find(params[:advancement_id]).update_attributes(:reqs_remaining => reqs_remaining)
   end
 end

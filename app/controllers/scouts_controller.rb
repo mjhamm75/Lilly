@@ -66,12 +66,12 @@ class ScoutsController < ApplicationController
   def reqs
     if(params[:parent].empty? && params[:children].empty?)
       puts "Solo"
-      req = Scout.find(params[:scout_id]).scout_requirements.find(params[:requirement_id])
+      req = Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first
       req_complete = false
       if(req.completed_date != nil)
-        Scout.find(params[:scout_id]).scout_requirements.find(params[:requirement_id]).update_attributes(:completed_date => nil)
+        Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => nil)
       else
-        Scout.find(params[:scout_id]).scout_requirements.find(params[:requirement_id]).update_attributes(:completed_date => Date.today)
+        Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => Date.today)
         req_complete = true
       end
     elsif(params[:parent].empty?)
