@@ -37,69 +37,73 @@ class ScoutsController < ApplicationController
         render :json => {
           :scout => @scout,
           :merit_badges => @scout.merit_badges
-        } , :status => :ok
-      }
+          } , :status => :ok
+        }
+      end
     end
-  end
 
-  def destroy
-    @scout.destroy
-    respond_to do |format|
-      format.html { redirect_to scouts_path }
-      format.json { head :no_content }
+    def destroy
+      @scout.destroy
+      respond_to do |format|
+        format.html { redirect_to scouts_path }
+        format.json { head :no_content }
+      end
     end
-  end
 
-  def show
-    mb = MeritBadge.find_by_name(params[:badge])
-    @scout.advancements << mb
-    @scout.requirements << mb.requirements
-    respond_to do |format|
-      format.json {
-        render :json => {
-          :merit_badge => mb
-        }, :status => :ok
-      }
-    end
-  end
+    def show
+      mb = MeritBadge.find_by_name(params[:badge])
+      @scout.advancements << mb
+      @scout.requirements << mb.requirements
+      respond_to do |format|
+        format.json {
+          render :json => {
+            :merit_badge => mb
+            }, :status => :ok
+          }
+        end
+      end
+
+  # def reqs
+  #   if(params[:parent].empty? && params[:children].empty?)
+  #     puts "Solo"
+  #     req = Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first
+  #     req_complete = false
+  #     if(req.completed_date != nil)
+  #       Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => nil)
+  #     else
+  #       Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => Date.today)
+  #       req_complete = true
+  #     end
+  #   elsif(params[:parent].empty?)
+  #     puts"Parent"
+  #     puts params
+  #   elsif (params[:children].empty?)
+  #     puts"Child"
+  #     complete_requirement(params[:requirement_id])
+  #     req_complete = true
+  #     parent_finished = check_parent
+  #     if parent_finished
+  #       parent_complete = true
+  #       Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => Date.today)
+  #     else
+  #       Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => nil)
+  #     end
+  #   end
+
+    # update_percentage_complete
+
+    # respond_to do |format|
+    #   format.json {
+    #     render :json => {
+    #       req_complete: req_complete,
+    #       parent_complete: parent_complete
+    #     } , :status => :ok
+    #   }
+    # end
+  # end
 
   def reqs
-    if(params[:parent].empty? && params[:children].empty?)
-      puts "Solo"
-      req = Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first
-      req_complete = false
-      if(req.completed_date != nil)
-        Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => nil)
-      else
-        Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => Date.today)
-        req_complete = true
-      end
-    elsif(params[:parent].empty?)
-      puts"Parent"
-      puts params
-    elsif (params[:children].empty?)
-      puts"Child"
-      complete_requirement(params[:requirement_id])
-      req_complete = true
-      parent_finished = check_parent
-      if parent_finished
-        parent_complete = true
-        Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => Date.today)
-      else
-        Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => nil)
-      end
-    end
-
-    update_percentage_complete
-
-    respond_to do |format|
-      format.json {
-        render :json => {
-          req_complete: req_complete,
-          parent_complete: parent_complete
-        } , :status => :ok
-      }
-    end
+    get_all_requirements
   end
 
   def set_scout

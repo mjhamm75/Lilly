@@ -1,5 +1,16 @@
 module ApplicationHelper
 
+  def get_all_requirements
+    ar = AdvancementRequirement.where(:requirement_id => params[:requirement_id]).first
+    if(ar.isSolo?)
+
+    elsif (ar.isParent?)
+
+    elsif (ar.isChild?)
+
+    end
+  end
+
   def get_requirement
     allReqs = Scout.find(params[:scout_id]).scout_requirements.find(Advancement.find(params[:advancement_id]).advancement_requirements.pluck(:requirement_id))
     req = nil
