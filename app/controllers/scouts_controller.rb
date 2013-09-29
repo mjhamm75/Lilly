@@ -103,7 +103,7 @@ class ScoutsController < ApplicationController
   # end
 
   def reqs
-    get_all_requirements
+    update_requirement
   end
 
   def set_scout

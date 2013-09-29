@@ -1,14 +1,20 @@
 module ApplicationHelper
 
-  def get_all_requirements
+  def update_requirement
     ar = AdvancementRequirement.where(:requirement_id => params[:requirement_id]).first
-    if(ar.isSolo?)
+    sr = ScoutRequirement.where(:requirement_id => params[:requirement_id], :scout_id => params[:scout_id]).first
+    if ar.isSolo?
+      if sr.isComplete?
+        Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => nil)
+      else
+        Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => Date.today)
+      end
+    elsif ar.isChild?
 
-    elsif (ar.isParent?)
-
-    elsif (ar.isChild?)
-
+    elsif ar.isParent?
+      puts "Do nothing"
     end
+    binding.pry
   end
 
   def get_requirement
