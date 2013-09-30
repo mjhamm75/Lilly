@@ -1,5 +1,5 @@
 class ScoutsController < ApplicationController
-  include ApplicationHelper
+  include ScoutHelper
   before_action :set_scout, only: [:show, :edit, :update, :destroy]
 
   # GET /scouts
@@ -63,55 +63,19 @@ class ScoutsController < ApplicationController
         end
       end
 
-  # def reqs
-  #   if(params[:parent].empty? && params[:children].empty?)
-  #     puts "Solo"
-  #     req = Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first
-  #     req_complete = false
-  #     if(req.completed_date != nil)
-  #       Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => nil)
-  #     else
-  #       Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => params[:requirement_id]).first.update_attributes(:completed_date => Date.today)
-  #       req_complete = true
-  #     end
-  #   elsif(params[:parent].empty?)
-  #     puts"Parent"
-  #     puts params
-  #   elsif (params[:children].empty?)
-  #     puts"Child"
-  #     complete_requirement(params[:requirement_id])
-  #     req_complete = true
-  #     parent_finished = check_parent
-  #     if parent_finished
-  #       parent_complete = true
-  #       Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => Date.today)
-  #     else
-  #       Scout.find(params[:scout_id]).scout_requirements.find(params[:parent]).update_attributes(:completed_date => nil)
-  #     end
-  #   end
-
-    # update_percentage_complete
-
-    # respond_to do |format|
-    #   format.json {
-    #     render :json => {
-    #       req_complete: req_complete,
-    #       parent_complete: parent_complete
-    #     } , :status => :ok
-    #   }
-    # end
-  # end
-
   def reqs
-    update_requirement
+    result = update_requirement
+    respond_to do |format|
+      format.json {
+        render :json => {
+          req_complete: result[:req_complete],
+          parent_complete: result[:parent_complete]
+          } , :status => :ok
+        }
+      end
   end
 
   def set_scout
     @scout = Scout.find(params[:id])
-  end
-
-  def check_children(children)
-    children.each do |child|
-    end
   end
 end

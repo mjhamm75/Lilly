@@ -3,11 +3,11 @@ class AdvancementRequirement < ActiveRecord::Base
   belongs_to :requirement
 
   def isParent?
-    !self.parent.blank?
+    !self.children.blank?
   end
 
   def isChild?
-    !self.children.blank?
+    !self.parent.blank?
   end
 
   def isSolo?
