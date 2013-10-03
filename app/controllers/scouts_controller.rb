@@ -2,8 +2,6 @@ class ScoutsController < ApplicationController
   include ScoutHelper
   before_action :set_scout, only: [:show, :edit, :update, :destroy]
 
-  # GET /scouts
-  # GET /scouts.json
   def index
     @scouts = Scout.all
   end
@@ -64,7 +62,7 @@ class ScoutsController < ApplicationController
       end
 
   def reqs
-    result = update_requirement
+    result = get_updates
     respond_to do |format|
       format.json {
         render :json => {
