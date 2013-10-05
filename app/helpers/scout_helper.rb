@@ -3,31 +3,18 @@ module ScoutHelper
   def get_updates
     ar = AdvancementRequirement.where(:requirement_id => params[:requirement_id]).first
     @sr = ScoutRequirement.where(:requirement_id => params[:requirement_id], :scout_id => params[:scout_id]).first
+    result = Hash.new(false)
     if ar.isSolo?
       puts "SOLO"
-      update_requirement(params[:requirement_id], @sr.isComplete?)
+      result[:req_complete] = update_requirement(params[:requirement_id], @sr.isComplete?)
     elsif ar.isChild?
       puts "CHILD"
-      update_child
+      result = update_child
     elsif ar.isParent?
       puts "PARENT"
     end
+    result
   end
-  # def update_requirement
-  #   ar = AdvancementRequirement.where(:requirement_id => params[:requirement_id]).first
-  #   @sr = ScoutRequirement.where(:requirement_id => params[:requirement_id], :scout_id => params[:scout_id]).first
-  #   result = Hash.new(false)
-  #   if ar.isSolo?
-  #     req_complete = update_single(params[:requirement_id], @sr.isComplete?)
-  #     result[:req_complete => req_complete]
-  #   elsif ar.isChild?
-  #     result_child = update_child
-  #     result = result.merge(result_child)
-  #   elsif ar.isParent?
-  #     "Do nothing"
-  #   end
-  #   result
-  # end
 
   def update_requirement(requirement_id, isComplete)
     puts "UPDATE REQ"
@@ -42,19 +29,12 @@ module ScoutHelper
     end
   end
 
-  # def update_child
-  #   result = Hash.new(false)
-  #   req_complete = update_single(params[:requirement_id], @sr.isComplete?)
-  #   parent_complete = update_parent
-  #   result[:req_complete] = req_complete
-  #   result[:parent_complete] = parent_complete
-  #   result
-  # end
-
   def update_child
     puts "UPDATE CHILD"
-    req_complete = update_requirement(params[:requirement_id], @sr.isComplete?)
-    parent_complete = update_parent
+    result = Hash.new(false)
+    result[:req_complete] = update_requirement(params[:requirement_id], @sr.isComplete?)
+    result[:parent_complete] = update_parent
+    return result
   end
 
   def update_parent

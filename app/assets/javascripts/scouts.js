@@ -105,30 +105,31 @@ $(document).ready(function() {
       type: 'PUT'
     });
     var success = function(data) {
+      var $div = $row.children().last();
       if (data.req_complete === true) {
-        var $div = $row.children().last();
-        var length = $div.find('img').length;
-        if (length === 1) {
-          $div.find('img').remove();
-        } else {
-          $div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
-        }
+        toggleCheck($div, true);
       }
+      if(data.req_complete === false) {
+        toggleCheck($div, false);
+      }
+      var parent = $('[data-req=' + $row.data().parent + ']');
       if (data.parent_complete === true) {
-        var parent = $('[data-req=' + $row.data().parent + ']');
-        var imgDiv = parent.children().last();
-        if (imgDiv.find('img').length === 0) {
-          imgDiv.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
-        }
+        toggleCheck(parent, true);
       }
-      if (data.parent_complete === null) {
-        var parentDiv = $('[data-req=' + $row.data().parent + ']');
-        var imgDiv = parentDiv.children().last();
-        if (imgDiv.find('img').length === 1) {
-          imgDiv.find('img').remove();
-        }
+      if (data.parent_complete === false) {
+        toggleCheck(parent, false);
       }
     };
     req.done(success);
   });
+
+  var toggleCheck = function(div, turnOn) {
+    if (!turnOn) {
+      div.find('img').remove();
+    } else {
+      if(div.children(':last').find('img').length === 0) {
+        div.append("<img alt=\"Checkmark\" height=\"48\" src=\"/assets/checkmark.png\" width=\"48\">");
+      }
+    }
+  };
 });
