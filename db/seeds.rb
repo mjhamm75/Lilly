@@ -438,7 +438,7 @@ if Rank.find_by_name("Star").requirements.count == 0
   r = Requirement.create([
                            {requirement:  "Be active in your unit (and patrol if you are in one) for at least four months as a First Class Scout.", internal_id: 56},
                            {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life.", internal_id: 57},
-                           {requirement:  "Earn six merit badges, including any four from the required list for Eagle.", internal_id: 58},
+                           {requirement:  "Earn six merit badges, including any four from the required list for Eagle.", children_merit_badges: 6, internal_id: 58},
                            {requirement:  "While a First Class Scout, take part in service projects totaling at least six hours of work. These projects must be approved by your Scoutmaster.", internal_id: 59},
                            {requirement:  "While a First Class Scout, serve actively in your unit for four months in one or more of the following positions of responsibility (or carry out a unit leader-assigned leadership project to help your unit):", internal_id: 60},
                            {requirement:  "Take part in a Scoutmaster conference.", internal_id: 61},

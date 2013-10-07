@@ -1,0 +1,19 @@
+<div class="row" data-req="<%= req.requirement_id %>" data-children="<%= req.children %>" data-parent="<%= req.parent %>", data-childrenCount="<%= req.children_count %>">
+  <% if req.label != nil && req.label.is_number? %>
+  <div class="cell">
+    <%= req.label %>.
+  </div>
+  <% else %>
+  <div class="cell letter">
+    <%= req.label %>
+  </div>
+  <% end %>
+  <div class="cell">
+    <%= req.requirement.requirement %>
+  </div>
+  <div>
+    <% if @scout.scout_requirements.where(:requirement_id => req.requirement_id)[0].completed_date != nil %>
+    <%= image_tag("checkmark.png", size: "48x48") %>
+    <% end %>
+  </div>
+</div>

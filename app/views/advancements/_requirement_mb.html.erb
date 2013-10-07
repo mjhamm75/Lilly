@@ -1,0 +1,13 @@
+<% num.times do |n| %>
+<div class="row">
+  <div class="cell"></div>
+  <div class="cell">
+    <select class="chzn-select" id="chzn-select">
+      <% MeritBadge.alpha.all.each do |mb| %>
+      <option><%= mb.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="cell"></div>
+</div>
+<% end %>
