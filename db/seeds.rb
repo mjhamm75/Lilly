@@ -438,7 +438,7 @@ if Rank.find_by_name("Star").requirements.count == 0
   r = Requirement.create([
                            {requirement:  "Be active in your unit (and patrol if you are in one) for at least four months as a First Class Scout.", internal_id: 56},
                            {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life.", internal_id: 57},
-                           {requirement:  "Earn six merit badges, including any four from the required list for Eagle.", children_merit_badges: 6, internal_id: 58},
+                           {requirement:  "Earn six merit badges, including any four from the required list for Eagle.", children_merit_badge_count: 6, internal_id: 58},
                            {requirement:  "While a First Class Scout, take part in service projects totaling at least six hours of work. These projects must be approved by your Scoutmaster.", internal_id: 59},
                            {requirement:  "While a First Class Scout, serve actively in your unit for four months in one or more of the following positions of responsibility (or carry out a unit leader-assigned leadership project to help your unit):", internal_id: 60},
                            {requirement:  "Take part in a Scoutmaster conference.", internal_id: 61},
@@ -465,6 +465,63 @@ if Rank.find_by_name("Star").requirements.count == 0
     end
   end
   puts "Updated Star ar's"
+end
+
+if Rank.find_by_name("Life").requirements.count == 0
+  r = Requirement.create([
+                           {requirement:  "Be active in your unit (and patrol if you are in one) for at least six months as a Star Scout.", internal_id: 63},
+                           {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life.", internal_id: 64},
+                           {requirement:  "Earn five more merit badges (so that you have 11 in all), including any three more from the required list for Eagle.", children_merit_badge_count: 5, internal_id: 65},
+                           {requirement:  "While a Star Scout, take part in service projects totaling at least six hours of work. These projects must be approved by your Scoutmaster.", internal_id: 66},
+                           {requirement:  "While a Star Scout, serve actively in your unit for six months in one or more of the positions of responsibility listed in requirement 5 for Star Scout (or carry out a Scoutmaster-assigned leadership project to help the troop).", internal_id: 67},
+                           {requirement:  "While a Star Scout, use the EDGE method to teach another Scout (preferably younger than you) the skills from ONE of the following seven choices, so that he is prepared to pass those requirements to his unit leader's satisfaction.", internal_id: 68},
+                           {requirement:  "Second Class – 7a and 7c (first aid)", internal_id: 69},
+                           {requirement:  "Second Class – 1a (outdoor skills)", internal_id: 70},
+                           {requirement:  "Second Class – 3c, 3d, 3e, and 3f (cooking/camping)", internal_id: 71},
+                           {requirement:  "First Class – 8a, 8b, 8c, and 8d (first aid)", internal_id: 72},
+                           {requirement:  "First Class – 1, 7a, and 7b (outdoor skills)", internal_id: 73},
+                           {requirement:  "First Class – 4a, 4b, and 4d (cooking/camping)", internal_id: 74},
+                           {requirement:  "Three requirements from one of the required for Eagle merit badges, as approved by your unit leader.", internal_id: 75},
+                           {requirement:  "Take part in a Scoutmaster conference.", internal_id: 76},
+                           {requirement:  "Complete your board of review.", internal_id: 77},
+  ])
+  Rank.find_by_name("Life").requirements << r
+  puts "Star reqs created"
+
+  mb = Rank.find_by_name("Life").advancement_requirements.each do |req|
+    if(req.requirement.internal_id == 63)
+      req.update_attributes(:label => "1", :ord => 1)
+    elsif(req.requirement.internal_id == 64)
+      req.update_attributes(:label => "2", :ord => 2)
+    elsif(req.requirement.internal_id == 65)
+      req.update_attributes(:label => "3", :ord => 3)
+    elsif(req.requirement.internal_id == 66)
+      req.update_attributes(:label => "4", :ord => 4)
+    elsif(req.requirement.internal_id == 67)
+      req.update_attributes(:label => "5", :ord => 5)
+    elsif(req.requirement.internal_id == 68)
+      req.update_attributes(:label => "6", :ord => 6)
+    elsif(req.requirement.internal_id == 69)
+      req.update_attributes(:label => "a", :ord => 7)
+    elsif(req.requirement.internal_id == 70)
+      req.update_attributes(:label => "b", :ord => 8)
+    elsif(req.requirement.internal_id == 71)
+      req.update_attributes(:label => "c", :ord => 9)
+    elsif(req.requirement.internal_id == 72)
+      req.update_attributes(:label => "d", :ord => 10)
+    elsif(req.requirement.internal_id == 73)
+      req.update_attributes(:label => "e", :ord => 11)
+    elsif(req.requirement.internal_id == 74)
+      req.update_attributes(:label => "f", :ord => 12)
+    elsif(req.requirement.internal_id == 75)
+      req.update_attributes(:label => "g", :ord => 13)
+    elsif(req.requirement.internal_id == 76)
+      req.update_attributes(:label => "7", :ord => 14)
+    elsif(req.requirement.internal_id == 77)
+      req.update_attributes(:label => "8`", :ord => 15)
+    end
+  end
+  puts "Updated LIfe ar's"
 end
 
 # Scout.all.each do |scout|
