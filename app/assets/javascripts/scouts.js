@@ -51,12 +51,15 @@ $(document).ready(function() {
 
   var add_service_hours = function() {
     var scout_id = $('[data-scout-id]').data().scoutId;
+    var title = $('#service_title').val();
+    var place = $('#service_place').val();
+    var date = $('#service_date').val();
     var req = $.ajax({
       url: '/scouts/' + scout_id + '/service_hours',
       data: {
-        title: $('#service_title').val(),
-        place: $('#service_place').val(),
-        date: $('#service_date').val(),
+        title: title,
+        place: place,
+        date: date,
         hours: $('#service_hours').val(),
         mins: $('#service_mins').val()
       },
@@ -64,7 +67,7 @@ $(document).ready(function() {
     });
 
     var success = function() {
-
+      $('#service_hours_table table tbody').append('<tr><td>' + title + '</td><td>' + place + '</td><td>' + date + '</td><td>' + 'unknown'+ '</td></tr>');
     };
     req.done(success);
   };
