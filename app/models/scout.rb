@@ -8,6 +8,8 @@ class Scout < ActiveRecord::Base
   has_many :scout_requirements, :dependent => :destroy
   has_many :requirements, through: :scout_requirements
 
+  has_many :service_hours
+
   def full_name
     self.first_name + " " + self.last_name
   end

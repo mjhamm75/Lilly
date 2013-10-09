@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131005122657) do
+ActiveRecord::Schema.define(version: 20131009094241) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "advancement_id"
@@ -65,6 +65,16 @@ ActiveRecord::Schema.define(version: 20131005122657) do
     t.date     "birthdate"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "service_hours", force: true do |t|
+    t.string   "title"
+    t.string   "place"
+    t.integer  "minutes"
+    t.date     "date_of_service"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "scout_id"
   end
 
 end

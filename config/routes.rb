@@ -1,6 +1,7 @@
 Lilly::Application.routes.draw do
   resources :scouts do
     resources :advancements
+    resources :service_hours
     match 'reqs', to: 'scouts#reqs', via: :put
   end
 

@@ -11,7 +11,7 @@
 <%= yield %>
 
 <script type="text/template" id="new_scout_modal">
-	<h1 class="modal-header">Add New scout</h1>
+  <h1 class="modal-header">Add New scout</h1>
   <form class="modal-body">
     <label>First Name</label>
     <input id="first_name" type="text">
@@ -32,6 +32,47 @@
       <% end %>
     </select>
     </div>
+  </form>
+</script>
+
+<script type="text/template" id="add_service_hours_modal">
+  <h1 class="modal-header">Add Service Hours</h1>
+  <form class="modal-body">
+    <label>Title</label>
+    <input id="service_title" type="text">
+    <label>Place</label>
+    <input id="service_place" type="text">
+    <label>Date of Service</label  >
+    <input id="service_date" type="date">
+    <label>Hours</label>
+    <select class="chzn-select" id="service_hours">
+      <option>1 Hour</option>
+      <option>2 Hours</option>
+      <option>3 Hours</option>
+      <option>4 Hours</option>
+      <option>5 Hours</option>
+      <option>6 Hours</option>
+      <option>7 Hours</option>
+      <option>8 Hours</option>
+      <option>9 Hours</option>
+      <option>10 Hours</option>
+      <option>11 Hours</option>
+      <option>12 Hours</option>
+      <option>13 Hours</option>
+      <option>14 Hours</option>
+      <option>15 Hours</option>
+      <option>16 Hours</option>
+      <option>17 Hours</option>
+      <option>18 Hours</option>
+      <option>19 Hours</option>
+      <option>20 Hours</option>
+    </select>
+    <label>Minutes</label>
+    <select class="chzn-select" id="service_mins">
+      <option>15 mins</option>
+      <option>30 mins</option>
+      <option>45 mins</option>
+    </select>
   </form>
 </script>
 

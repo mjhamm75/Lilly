@@ -3,9 +3,25 @@ $(document).ready(function() {
 
 
 
-  $('#add_new_scout').on('click', function() {
+  $('#add_new_scout').on('click', function(e) {
+    e.preventDefault();
     var template = $("#new_scout_modal").html();
     create_modal(template, this.id);
+  });
+
+  $("#add_merit_badge").click(function(e) {
+    e.preventDefault();
+    var template = $("#add_merit_badge_modal").html();
+    create_modal(template, this.id);
+    $('.chzn-select').chosen();
+  });
+
+  $('#add_service_hours').on('click', function(e) {
+    e.preventDefault();
+    var template = $('#add_service_hours_modal').html();
+    create_modal(template, this.id);
+    $('#service_mins').chosen($(".chosen-select").chosen({disable_search_threshold: 10}));
+    $('#service_hours').chosen($(".chosen-select").chosen({disable_search_threshold: 21}));
   });
 
   $('#complete').on('click', function(e) {
@@ -16,6 +32,9 @@ $(document).ready(function() {
     if (this.id === "complete_add_merit_badge") {
       add_new_merit_badge();
     }
+    if (this.id === "complete_add_service_hours") {
+      add_service_hours();
+    }
     $('#modal_container').modal('hide');
   });
 
@@ -23,18 +42,31 @@ $(document).ready(function() {
     window.location = $(this).data("link");
   });
 
-  $("#add_merit_badge").click(function(e) {
-    e.preventDefault();
-    var template = $("#add_merit_badge_modal").html();
-    create_modal(template, this.id);
-    $('.chzn-select').chosen();
-  });
-
   var create_modal = function(template, name) {
     $('.modal-header').html($(template).siblings('.modal-header'));
     $('.modal-body').html($(template).siblings('.modal-body'));
     $('.modal-footer #complete').attr("id", "complete_" + name);
     $('#modal_container').modal();
+  };
+
+  var add_service_hours = function() {
+    var scout_id = $('[data-scout-id]').data().scoutId;
+    var req = $.ajax({
+      url: '/scouts/' + scout_id + '/service_hours',
+      data: {
+        title: $('#service_title').val(),
+        place: $('#service_place').val(),
+        date: $('#service_date').val(),
+        hours: $('#service_hours').val(),
+        mins: $('#service_mins').val()
+      },
+      method: 'POST'
+    });
+
+    var success = function() {
+
+    };
+    req.done(success);
   };
 
   var add_new_scout = function() {
