@@ -35,30 +35,50 @@
             </th>
             <th>
              Requirements to Complete Advancement
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @scout.advancements.merit_badges.each do |badge|%>
-          <tr data-link="<%= edit_scout_advancement_path(@scout, badge) %>">
-            <td>
-              <% if badge.eagle_required == true %>
-              <i class="icon-ok"></i>
-              <% end %>
-            </td>
-            <td><%= badge.name %></td>
-            <td><%= @scout.scout_advancements.find(badge).reqs_remaining %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <% end %>
-    <a href="#" class="btn btn-success" id="add_merit_badge">Add</a>
+           </th>
+         </tr>
+       </thead>
+       <tbody>
+        <% @scout.advancements.merit_badges.each do |badge|%>
+        <tr data-link="<%= edit_scout_advancement_path(@scout, badge) %>">
+          <td>
+            <% if badge.eagle_required == true %>
+            <i class="icon-ok"></i>
+            <% end %>
+          </td>
+          <td><%= badge.name %></td>
+          <td><%= @scout.scout_advancements.find(badge).reqs_remaining %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-  <div class="hero-unit">
-    <h2>Service Hours</h2>
-    <a href="#" class="btn btn-success" id="add_service_hours">Add</a>
-  </div>
-  <%= button_to 'Remove Scout', @scout, :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
+  <% end %>
+  <a href="#" class="btn btn-success" id="add_merit_badge">Add</a>
+</div>
+<div class="hero-unit">
+  <h2>Service Hours</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Place</th>
+        <th>Date</th>
+        <th>Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @scout.service_hours.each do |hour| %>
+      <tr>
+        <td><%= hour.title %></td>
+        <td><%= hour.place %></td>
+        <td><%= hour.date_of_service %></td>
+        <td><%= hour.minutes %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  <table>
+  <a href="#" class="btn btn-success" id="add_service_hours">Add</a>
+</div>
+<%= button_to 'Remove Scout', @scout, :method => :delete, :class => "btn btn-warning", data: { confirm: 'Are you sure?' }%>
 </div>
