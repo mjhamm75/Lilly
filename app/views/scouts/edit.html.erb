@@ -47,7 +47,7 @@
             <% end %>
           </td>
           <td><%= badge.name %></td>
-          <td><%= @scout.scout_advancements.find(badge).reqs_remaining %></td>
+          <td><%= @scout.scout_advancements.where(:advancement_id => badge.id).first.reqs_remaining %></td>
         </tr>
         <% end %>
       </tbody>

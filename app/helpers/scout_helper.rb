@@ -5,7 +5,7 @@ module ScoutHelper
     @sr = ScoutRequirement.where(:requirement_id => params[:requirement_id], :scout_id => params[:scout_id]).first
     result = Hash.new(false)
     if ar.isSolo?
-      puts "SOLO"
+      puts "SINGLE"
       result[:req_complete] = update_requirement(params[:requirement_id], @sr.isComplete?)
     elsif ar.isChild?
       puts "CHILD"
@@ -20,13 +20,42 @@ module ScoutHelper
     puts "UPDATE REQ"
     puts requirement_id
     puts isComplete
+    result = false
     if isComplete
       Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => requirement_id).first.update_attributes(:completed_date => nil)
-      false
     else
       Scout.find(params[:scout_id]).scout_requirements.where(:requirement_id => requirement_id).first.update_attributes(:completed_date => Date.today)
-      true
+      result = true
     end
+    update_reqs_remaining
+    return result
+  end
+
+  def update_reqs_remaining
+    ars = Scout.find(params[:scout_id]).advancements.find(params[:advancement_id]).advancement_requirements
+    count = 0
+    ars.each do |ar|
+      if ar.isParent? || ar.isSolo?
+        sr = ScoutRequirement.where(:requirement_id => ar.requirement_id, :scout_id => params[:scout_id])
+        if sr.first.isComplete?
+          count = count + 1
+        end
+      end
+    end
+    reqs_needed = get_reqs_needed
+    reqs_remaining = reqs_needed - count
+    sa = Scout.find(params[:scout_id]).scout_advancements.where(:advancement_id => params[:advancement_id]).first.update_attribute(:reqs_remaining, reqs_remaining)
+  end
+
+  def get_reqs_needed
+    ars = Scout.find(params[:scout_id]).advancements.find(params[:advancement_id]).advancement_requirements
+    count = 0
+    ars.each do |ar|
+      if ar.isParent? || ar.isSolo?
+        count = count + 1
+      end
+    end
+    count
   end
 
   def update_child
