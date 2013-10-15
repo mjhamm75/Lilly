@@ -44,6 +44,13 @@ module ScoutHelper
     end
     reqs_needed = get_reqs_needed
     reqs_remaining = reqs_needed - count
+    if reqs_remaining == 0
+      Scout.find(params[:scout_id]).scout_advancements.where(:advancement_id => params[:advancement_id]).first.update_attribute(:completed_date, Date.today)
+      puts "ADVANCEMENT COMPLETE"
+    else
+      Scout.find(params[:scout_id]).scout_advancements.where(:advancement_id => params[:advancement_id]).first.update_attribute(:completed_date, nil)
+      puts "NOT COMPLETE"
+    end
     sa = Scout.find(params[:scout_id]).scout_advancements.where(:advancement_id => params[:advancement_id]).first.update_attribute(:reqs_remaining, reqs_remaining)
   end
 
