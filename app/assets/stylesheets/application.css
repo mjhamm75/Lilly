@@ -30,6 +30,9 @@
 .letter {
   padding-left: 10px;
 }
+.sub-letter {
+  padding-left: 12px;
+}
 .checkbox_center {
   text-align: center;
   vertical-align: center

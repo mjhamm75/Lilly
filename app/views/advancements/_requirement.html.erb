@@ -3,8 +3,12 @@
   <div class="cell">
     <%= req.label %>.
   </div>
-  <% else %>
+  <% elsif req.label != nil && req.label.is_letter? %>
   <div class="cell letter">
+    <%= req.label %>
+  </div>
+  <% else req.label == nil%>
+  <div class="cell sub-letter">
     <%= req.label %>
   </div>
   <% end %>
