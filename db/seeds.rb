@@ -560,39 +560,39 @@ end
 if Rank.find_by_name("Boy Scout").requirements.count == 0
   r = Requirement.create([
                            {requirement:  "Meet the age requirements. Be a boy who is 11 years old, or one who has completed the fifth grade or earned the Arrow of Light Award and is at least 10 years old, but is not yet 18 years old.", internal_id: 85},
-                           {requirement:  "Find a Scout troop near your home.", internal_id: 85},
-                           {requirement:  "Complete a Boy Scout application and health history signed by your parent or guardian.", internal_id: 86},
-                           {requirement:  "Repeat the Pledge of Allegiance.", internal_id: 87},
-                           {requirement:  "Demonstrate the Scout sign, salute, and handshake.", internal_id: 88},
-                           {requirement:  "Demonstrate tying the square knot (a joining knot).", internal_id: 89},
-                           {requirement:  "Understand and agree to live by the Scout Oath, Scout Law, motto, slogan, and the Outdoor Code.", internal_id: 90},
-                           {requirement:  "Describe the Scout badge.", internal_id: 91},
-                           {requirement:  "Complete the pamphlet exercises. With your parent or guardian, complete the exercises in the pamphlet \"How to Protect Your Children from Child Abuse: A Parent's Guide\".", internal_id: 92},
-                           {requirement:  "Participate in a Scoutmaster conference. Turn in your Boy Scout application and health history form signed by your parent or guardian, then participate in a Scoutmaster conference.", internal_id: 93}
+                           {requirement:  "Find a Scout troop near your home.", internal_id: 86},
+                           {requirement:  "Complete a Boy Scout application and health history signed by your parent or guardian.", internal_id: 87},
+                           {requirement:  "Repeat the Pledge of Allegiance.", internal_id: 88},
+                           {requirement:  "Demonstrate the Scout sign, salute, and handshake.", internal_id: 89},
+                           {requirement:  "Demonstrate tying the square knot (a joining knot).", internal_id: 90},
+                           {requirement:  "Understand and agree to live by the Scout Oath, Scout Law, motto, slogan, and the Outdoor Code.", internal_id: 91},
+                           {requirement:  "Describe the Scout badge.", internal_id: 92},
+                           {requirement:  "Complete the pamphlet exercises. With your parent or guardian, complete the exercises in the pamphlet \"How to Protect Your Children from Child Abuse: A Parent's Guide\".", internal_id: 93},
+                           {requirement:  "Participate in a Scoutmaster conference. Turn in your Boy Scout application and health history form signed by your parent or guardian, then participate in a Scoutmaster conference.", internal_id: 94}
   ])
   Rank.find_by_name("Boy Scout").requirements << r
   puts "Boy Scout reqs created"
 
   mb = Rank.find_by_name("Boy Scout").advancement_requirements.each do |req|
-    if(req.requirement.internal_id == 84)
+    if(req.requirement.internal_id == 85)
       req.update_attributes(:label => "1", :ord => 1)
-    elsif(req.requirement.internal_id == 85)
-      req.update_attributes(:label => "2", :ord => 2)
     elsif(req.requirement.internal_id == 86)
-      req.update_attributes(:label => "3", :ord => 3)
+      req.update_attributes(:label => "2", :ord => 2)
     elsif(req.requirement.internal_id == 87)
-      req.update_attributes(:label => "4", :ord => 4)
+      req.update_attributes(:label => "3", :ord => 3)
     elsif(req.requirement.internal_id == 88)
-      req.update_attributes(:label => "5", :ord => 5)
+      req.update_attributes(:label => "4", :ord => 4)
     elsif(req.requirement.internal_id == 89)
-      req.update_attributes(:label => "6", :ord => 6)
+      req.update_attributes(:label => "5", :ord => 5)
     elsif(req.requirement.internal_id == 90)
-      req.update_attributes(:label => "7", :ord => 7)
+      req.update_attributes(:label => "6", :ord => 6)
     elsif(req.requirement.internal_id == 91)
-      req.update_attributes(:label => "8", :ord => 8)
+      req.update_attributes(:label => "7", :ord => 7)
     elsif(req.requirement.internal_id == 92)
-      req.update_attributes(:label => "9", :ord => 9)
+      req.update_attributes(:label => "8", :ord => 8)
     elsif(req.requirement.internal_id == 93)
+      req.update_attributes(:label => "9", :ord => 9)
+    elsif(req.requirement.internal_id == 94)
       req.update_attributes(:label => "10", :ord => 10)
     end
   end
@@ -601,77 +601,134 @@ end
 
 if Rank.find_by_name("Tenderfoot").requirements.count == 0
   r = Requirement.create([
-                           {requirement:  "Present yourself to your leader, properly dressed, before going on an overnight camping trip. Show the camping gear you will use. Show the right way to pack and carry it.", internal_id: 94},
-                           {requirement:  "Spend at least one night on a patrol or troop campout. Sleep in a tent you have helped pitch.", internal_id: 95},
-                           {requirement:  "On the campout, assist in preparing and cooking one of your patrol's meals. Tell why it is important for each patrol member to share in meal preparation and cleanup, and explain the importance of eating together.", internal_id: 96},
-                           {requirement:  "Do the following", internal_id: 97},
-                           {requirement:  "Demonstrate how to whip and fuse the ends of a rope.", internal_id: 98},
-                           {requirement:  "Demonstrate you know how to tie the following knots and tell what their uses are: two half hitches and the taut-line hitch.", internal_id: 99},
-                           {requirement:  "Using the EDGE method, teach another person how to tie the square knot.", internal_id: 100},
-                           {requirement:  "Explain the rules of safe hiking, both on the highway and cross-country, during the day and at night. Explain what to do if you are lost.", internal_id: 101},
-                           {requirement:  "Demonstrate how to display, raise, lower, and fold the American flag.", internal_id: 102},
-                           {requirement:  "Repeat from memory and explain in your own words the Scout Oath, Law, motto, and slogan.", internal_id: 103},
-                           {requirement:  "Know your patrol name, give the patrol yell, and describe your patrol flag.", internal_id: 104},
-                           {requirement:  "Explain the importance of the buddy system as it relates to your personal safety on outings and in your neighborhood. Describe what a bully is and how you should respond to one.", internal_id: 105},
-                           {requirement:  "Do the following.", internal_id: 106},
-                           {requirement:  "Record your best in the following tests:", internal_id: 107},
-                           {requirement:  "Show improvement in the activities listed in requirement 10a after practicing for 30 days.", internal_id: 108},
-                           {requirement:  "Identify local poisonous plants; tell how to treat for exposure to them.", internal_id: 109},
-                           {requirement:  "Do the following.", internal_id: 110},
-                           {requirement:  "Demonstrate how to care for someone who is choking.", internal_id: 111},
-                           {requirement:  "Show first aid for the following:", internal_id: 112},
-                           {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life. Discuss four specific examples of how you have lived the points of the Scout Law in your daily life.", internal_id: 113},
-                           {requirement:  "Participate in a Scoutmaster conference.", internal_id: 114},
-                           {requirement:  "Complete your board of review.", internal_id: 115}
+                           {requirement:  "Present yourself to your leader, properly dressed, before going on an overnight camping trip. Show the camping gear you will use. Show the right way to pack and carry it.", internal_id: 95},
+                           {requirement:  "Spend at least one night on a patrol or troop campout. Sleep in a tent you have helped pitch.", internal_id: 96},
+                           {requirement:  "On the campout, assist in preparing and cooking one of your patrol's meals. Tell why it is important for each patrol member to share in meal preparation and cleanup, and explain the importance of eating together.", internal_id: 97},
+                           {requirement:  "Do the following", internal_id: 98},
+                           {requirement:  "Demonstrate how to whip and fuse the ends of a rope.", internal_id: 99},
+                           {requirement:  "Demonstrate you know how to tie the following knots and tell what their uses are: two half hitches and the taut-line hitch.", internal_id: 100},
+                           {requirement:  "Using the EDGE method, teach another person how to tie the square knot.", internal_id: 101},
+                           {requirement:  "Explain the rules of safe hiking, both on the highway and cross-country, during the day and at night. Explain what to do if you are lost.", internal_id: 102},
+                           {requirement:  "Demonstrate how to display, raise, lower, and fold the American flag.", internal_id: 103},
+                           {requirement:  "Repeat from memory and explain in your own words the Scout Oath, Law, motto, and slogan.", internal_id: 104},
+                           {requirement:  "Know your patrol name, give the patrol yell, and describe your patrol flag.", internal_id: 105},
+                           {requirement:  "Explain the importance of the buddy system as it relates to your personal safety on outings and in your neighborhood. Describe what a bully is and how you should respond to one.", internal_id: 106},
+                           {requirement:  "Do the following.", internal_id: 107},
+                           {requirement:  "Record your best in the following tests:", internal_id: 108},
+                           {requirement:  "Current Results", internal_id: 109},
+                           {requirement:  "Push-ups", internal_id: 110},
+                           {requirement:  "Pull-ups", internal_id: 111},
+                           {requirement:  "Sit-ups", internal_id: 112},
+                           {requirement:  "Standing long jump", internal_id: 113},
+                           {requirement:  "1/4 mile walk/run", internal_id: 114},
+                           {requirement:  "30 days later", internal_id: 115},
+                           {requirement:  "Push-ups", internal_id: 116},
+                           {requirement:  "Pull-ups", internal_id: 117},
+                           {requirement:  "Sit-ups", internal_id: 118},
+                           {requirement:  "Standing long jump", internal_id: 119},
+                           {requirement:  "1/4 mile walk/run", internal_id: 120},
+                           {requirement:  "Show improvement in the activities listed in requirement 10a after practicing for 30 days.", internal_id: 121},
+                           {requirement:  "Identify local poisonous plants; tell how to treat for exposure to them.", internal_id: 122},
+                           {requirement:  "Do the following.", internal_id: 123},
+                           {requirement:  "Demonstrate how to care for someone who is choking.", internal_id: 124},
+                           {requirement:  "Show first aid for the following:", internal_id: 125},
+                           {requirement:  "Simple cuts and scrapes", internal_id: 126},
+                           {requirement:  "Blisters on the hand and foot", internal_id: 127},
+                           {requirement:  "Minor (thermal/heat) burns or scalds (superficial, or first degree)", internal_id: 128},
+                           {requirement:  "Bites or stings of insects and ticks", internal_id: 129},
+                           {requirement:  "Venomous snakebite", internal_id: 130},
+                           {requirement:  "Nosebleed", internal_id: 131},
+                           {requirement:  "Frostbite and sunburn", internal_id: 132},
+                           {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life. Discuss four specific examples of how you have lived the points of the Scout Law in your daily life.", internal_id: 133},
+                           {requirement:  "Participate in a Scoutmaster conference.", internal_id: 134},
+                           {requirement:  "Complete your board of review.", internal_id: 135}
   ])
   Rank.find_by_name("Tenderfoot").requirements << r
   puts "Tenderfoot reqs created"
 
   mb = Rank.find_by_name("Tenderfoot").advancement_requirements.each do |req|
-    if(req.requirement.internal_id == 94)
+    if(req.requirement.internal_id == 95)
       req.update_attributes(:label => "1", :ord => 1)
-    elsif(req.requirement.internal_id == 95)
-      req.update_attributes(:label => "2", :ord => 2)
     elsif(req.requirement.internal_id == 96)
-      req.update_attributes(:label => "3", :ord => 3)
+      req.update_attributes(:label => "2", :ord => 2)
     elsif(req.requirement.internal_id == 97)
-      req.update_attributes(:label => "4", :ord => 4)
+      req.update_attributes(:label => "3", :ord => 3)
     elsif(req.requirement.internal_id == 98)
-      req.update_attributes(:label => "a", :ord => 5)
+      req.update_attributes(:label => "4", :ord => 4)
     elsif(req.requirement.internal_id == 99)
-      req.update_attributes(:label => "b", :ord => 6)
+      req.update_attributes(:label => "a", :ord => 5)
     elsif(req.requirement.internal_id == 100)
-      req.update_attributes(:label => "c", :ord => 7)
+      req.update_attributes(:label => "b", :ord => 6)
     elsif(req.requirement.internal_id == 101)
-      req.update_attributes(:label => "5", :ord => 8)
+      req.update_attributes(:label => "c", :ord => 7)
     elsif(req.requirement.internal_id == 102)
-      req.update_attributes(:label => "6", :ord => 9)
+      req.update_attributes(:label => "5", :ord => 8)
     elsif(req.requirement.internal_id == 103)
-      req.update_attributes(:label => "7", :ord => 10)
+      req.update_attributes(:label => "6", :ord => 9)
     elsif(req.requirement.internal_id == 104)
-      req.update_attributes(:label => "8", :ord => 11)
+      req.update_attributes(:label => "7", :ord => 10)
     elsif(req.requirement.internal_id == 105)
-      req.update_attributes(:label => "9", :ord => 12)
+      req.update_attributes(:label => "8", :ord => 11)
     elsif(req.requirement.internal_id == 106)
-      req.update_attributes(:label => "10", :ord => 13)
+      req.update_attributes(:label => "9", :ord => 12)
     elsif(req.requirement.internal_id == 107)
-      req.update_attributes(:label => "a", :ord => 14)
+      req.update_attributes(:label => "10", :ord => 13)
     elsif(req.requirement.internal_id == 108)
-      req.update_attributes(:label => "b", :ord => 15)
+      req.update_attributes(:label => "a", :ord => 14)
     elsif(req.requirement.internal_id == 109)
-      req.update_attributes(:label => "11", :ord => 16)
+      req.update_attributes(:label => "", :ord => 15)
     elsif(req.requirement.internal_id == 110)
-      req.update_attributes(:label => "12", :ord => 17)
+      req.update_attributes(:label => "", :ord => 16)
     elsif(req.requirement.internal_id == 111)
-      req.update_attributes(:label => "a", :ord => 18)
+      req.update_attributes(:label => "", :ord => 17)
     elsif(req.requirement.internal_id == 112)
-      req.update_attributes(:label => "b", :ord => 19)
+      req.update_attributes(:label => "", :ord => 18)
     elsif(req.requirement.internal_id == 113)
-      req.update_attributes(:label => "13", :ord => 20)
+      req.update_attributes(:label => "", :ord => 19)
     elsif(req.requirement.internal_id == 114)
-      req.update_attributes(:label => "14", :ord => 21)
+      req.update_attributes(:label => "", :ord => 20)
     elsif(req.requirement.internal_id == 115)
-      req.update_attributes(:label => "15", :ord => 22)
+      req.update_attributes(:label => "", :ord => 21)
+    elsif(req.requirement.internal_id == 116)
+      req.update_attributes(:label => "", :ord => 22)
+    elsif(req.requirement.internal_id == 117)
+      req.update_attributes(:label => "", :ord => 23)
+    elsif(req.requirement.internal_id == 118)
+      req.update_attributes(:label => "", :ord => 24)
+    elsif(req.requirement.internal_id == 119)
+      req.update_attributes(:label => "", :ord => 25)
+    elsif(req.requirement.internal_id == 120)
+      req.update_attributes(:label => "", :ord => 26)
+    elsif(req.requirement.internal_id == 121)
+      req.update_attributes(:label => "b", :ord => 27)
+    elsif(req.requirement.internal_id == 122)
+      req.update_attributes(:label => "11", :ord => 28)
+    elsif(req.requirement.internal_id == 123)
+      req.update_attributes(:label => "12", :ord => 29)
+    elsif(req.requirement.internal_id == 124)
+      req.update_attributes(:label => "a", :ord => 30)
+    elsif(req.requirement.internal_id == 125)
+      req.update_attributes(:label => "b", :ord => 31)
+    elsif(req.requirement.internal_id == 126)
+      req.update_attributes(:label => "", :ord => 32)
+    elsif(req.requirement.internal_id == 127)
+      req.update_attributes(:label => "", :ord => 33)
+    elsif(req.requirement.internal_id == 128)
+      req.update_attributes(:label => "", :ord => 34)
+    elsif(req.requirement.internal_id == 129)
+      req.update_attributes(:label => "", :ord => 35)
+    elsif(req.requirement.internal_id == 130)
+      req.update_attributes(:label => "", :ord => 36)
+    elsif(req.requirement.internal_id == 131)
+      req.update_attributes(:label => "", :ord => 37)
+    elsif(req.requirement.internal_id == 132)
+      req.update_attributes(:label => "", :ord => 38)
+    elsif(req.requirement.internal_id == 133)
+      req.update_attributes(:label => "13", :ord => 39)
+    elsif(req.requirement.internal_id == 134)
+      req.update_attributes(:label => "14", :ord => 40)
+    elsif(req.requirement.internal_id == 135)
+      req.update_attributes(:label => "15", :ord => 41)
     end
   end
   puts "Updated Tenderfoot ar's"
