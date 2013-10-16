@@ -734,6 +734,129 @@ if Rank.find_by_name("Tenderfoot").requirements.count == 0
   puts "Updated Tenderfoot ar's"
 end
 
+if Rank.find_by_name("Second Class").requirements.count == 0
+  r = Requirement.create([
+                           {requirement:  "Do the following", internal_id: 136},
+                           {requirement:  "Demonstrate how a compass works and how to orient a map. Explain what map symbols mean.", internal_id: 137},
+                           {requirement:  "Using a compass and a map together, take a five-mile hike (or 10 miles by bike) approved by your adult leader and your parent or guardian.", internal_id: 138},
+                           {requirement:  "Discuss the principles of Leave No Trace.", internal_id: 139},
+                           {requirement:  "Do the following.", internal_id: 140},
+                           {requirement:  "Since joining, have participated in five separate troop/patrol activities (other than troop/patrol meetings), two of which included camping overnight.", internal_id: 141},
+                           {requirement:  "On one of these campouts, select your patrol site and sleep in a tent that you pitched. Explain what factors you should consider when choosing a patrol site and where to pitch a tent.", internal_id: 142},
+                           {requirement:  "Demonstrate proper care, sharpening, and use of the knife, saw, and ax, and describe when they should be used.", internal_id: 143},
+                           {requirement:  "Use the tools listed in requirement 3c to prepare tinder, kindling, and fuel for a cooking fire.", internal_id: 144},
+                           {requirement:  "Explain when it is appropriate to use a cooking fire. At an approved outdoor location and at an approved time, and using the tinder, kindling, and fuel wood from requirement 3d, demonstrate how to build a fire; light the fire, unless prohibited by local fire restrictions. After allowing the flames to burn safely for at least two minutes, safely extinguish the flames with minimal impact to the fire site.", internal_id: 145},
+                           {requirement:  "Explain when it is appropriate to use a lightweight stove or propane stove. Set up a lightweight stove or propane stove; light the stove, unless prohibited by local fire restrictions. Describe the safety procedures for using these types of stoves.", internal_id: 146},
+                           {requirement:  "On one campout, plan and cook one hot breakfast or lunch, selecting foods from the MyPlate food guide or the current USDA nutrition model. Explain the importance of good nutrition. Tell how to transport, store, and prepare the foods you selected.", internal_id: 147},
+                           {requirement:  "Participate in a flag ceremony for your school, religious institution, chartered organization, community, or troop activity. Explain to your leader what respect is due the flag of the United States.", internal_id: 148},
+                           {requirement:  "Participate in an approved (minimum of one hour) service project.", internal_id: 149},
+                           {requirement:  "Identify or show evidence of at least 10 kinds of wild animals (birds, mammals, reptiles, fish, mollusks) found in your community.", internal_id: 150},
+                           {requirement:  "Do the following.", internal_id: 151},
+                           {requirement:  "Show what to do for \"hurry\" cases of stopped breathing, serious bleeding, and ingested poisoning.", internal_id: 152},
+                           {requirement:  "Prepare a personal first aid kit to take with you on a hike.", internal_id: 153},
+                           {requirement:  "Demonstrate first aid for the following:", internal_id: 154},
+                           {requirement:  "Object in the eye", internal_id: 155},
+                           {requirement:  "Bite of a suspected rabid animal", internal_id: 156},
+                           {requirement:  "Puncture wounds from a splinter, nail, and fishhook", internal_id: 157},
+                           {requirement:  "Serious burns (partial thickness, or second-degree)", internal_id: 158},
+                           {requirement:  "Heat exhaustion", internal_id: 159},
+                           {requirement:  "Shock", internal_id: 160},
+                           {requirement:  "Heatstroke, dehydration, hypothermia, and hyperventilation", internal_id: 161},
+                           {requirement:  "Do the following.", internal_id: 162},
+                           {requirement:  "Tell what precautions must be taken for a safe swim.", internal_id: 163},
+                           {requirement:  "Demonstrate your ability to jump feetfirst into water over your head in depth, level off and swim 25 feet on the surface, stop, turn sharply, resume swimming, then return to your starting place.", internal_id: 164},
+                           {requirement:  "Demonstrate water rescue methods by reaching with your arm or leg, by reaching with a suitable object, and by throwing lines and objects. Explain why swimming rescues should not be attempted when a reaching or throwing rescue is possible, and explain why and how a rescue swimmer should avoid contact with the victim.", internal_id: 165},
+                           {requirement:  "Do the following.", internal_id: 166},
+                           {requirement:  "Participate in a school, community, or troop program on the dangers of using drugs, alcohol, and tobacco, and other practices that could be harmful to your health. Discuss your participation in the program with your family, and explain the dangers of substance addictions.", internal_id: 167},
+                           {requirement:  "Explain the three R's of personal safety and protection.", internal_id: 168},
+                           {requirement:  "Earn an amount of money agreed upon by you and your parent, then save at least 50 percent of that money.", internal_id: 169},
+                           {requirement:  "Demonstrate Scout spirit by living the Scout Oath and Scout Law in your everyday life. Discuss four specific examples (different from those used for Tenderfoot requirement 13) of how you have lived the points of the Scout Law in your daily life.", internal_id: 170},
+                           {requirement:  "Participate in a Scoutmaster conference.", internal_id: 171},
+                           {requirement:  "Complete your board of review.", internal_id: 172}
+  ])
+  Rank.find_by_name("Second Class").requirements << r
+  puts "Second Class reqs created"
+
+  mb = Rank.find_by_name("Second Class").advancement_requirements.each do |req|
+    if(req.requirement.internal_id == 136)
+      req.update_attributes(:label => "1", :ord => 1)
+    elsif(req.requirement.internal_id == 137)
+      req.update_attributes(:label => "a", :ord => 2)
+    elsif(req.requirement.internal_id == 138)
+      req.update_attributes(:label => "b", :ord => 3)
+    elsif(req.requirement.internal_id == 139)
+      req.update_attributes(:label => "2", :ord => 4)
+    elsif(req.requirement.internal_id == 140)
+      req.update_attributes(:label => "3", :ord => 5)
+    elsif(req.requirement.internal_id == 141)
+      req.update_attributes(:label => "a", :ord => 6)
+    elsif(req.requirement.internal_id == 142)
+      req.update_attributes(:label => "b", :ord => 7)
+    elsif(req.requirement.internal_id == 143)
+      req.update_attributes(:label => "c", :ord => 8)
+    elsif(req.requirement.internal_id == 144)
+      req.update_attributes(:label => "d", :ord => 9)
+    elsif(req.requirement.internal_id == 145)
+      req.update_attributes(:label => "e", :ord => 10)
+    elsif(req.requirement.internal_id == 146)
+      req.update_attributes(:label => "f", :ord => 11)
+    elsif(req.requirement.internal_id == 147)
+      req.update_attributes(:label => "g", :ord => 12)
+    elsif(req.requirement.internal_id == 148)
+      req.update_attributes(:label => "4", :ord => 13)
+    elsif(req.requirement.internal_id == 149)
+      req.update_attributes(:label => "5", :ord => 14)
+    elsif(req.requirement.internal_id == 150)
+      req.update_attributes(:label => "6", :ord => 15)
+    elsif(req.requirement.internal_id == 151)
+      req.update_attributes(:label => "7", :ord => 16)
+    elsif(req.requirement.internal_id == 152)
+      req.update_attributes(:label => "a", :ord => 17)
+    elsif(req.requirement.internal_id == 153)
+      req.update_attributes(:label => "b", :ord => 18)
+    elsif(req.requirement.internal_id == 154)
+      req.update_attributes(:label => "c", :ord => 19)
+    elsif(req.requirement.internal_id == 155)
+      req.update_attributes(:label => "", :ord => 20)
+    elsif(req.requirement.internal_id == 156)
+      req.update_attributes(:label => "", :ord => 21)
+    elsif(req.requirement.internal_id == 157)
+      req.update_attributes(:label => "", :ord => 22)
+    elsif(req.requirement.internal_id == 158)
+      req.update_attributes(:label => "", :ord => 23)
+    elsif(req.requirement.internal_id == 159)
+      req.update_attributes(:label => "", :ord => 24)
+    elsif(req.requirement.internal_id == 160)
+      req.update_attributes(:label => "", :ord => 25)
+    elsif(req.requirement.internal_id == 161)
+      req.update_attributes(:label => "", :ord => 26)
+    elsif(req.requirement.internal_id == 162)
+      req.update_attributes(:label => "8", :ord => 27)
+    elsif(req.requirement.internal_id == 163)
+      req.update_attributes(:label => "a", :ord => 28)
+    elsif(req.requirement.internal_id == 164)
+      req.update_attributes(:label => "b", :ord => 29)
+    elsif(req.requirement.internal_id == 165)
+      req.update_attributes(:label => "c", :ord => 30)
+    elsif(req.requirement.internal_id == 166)
+      req.update_attributes(:label => "9", :ord => 31)
+    elsif(req.requirement.internal_id == 167)
+      req.update_attributes(:label => "a", :ord => 32)
+    elsif(req.requirement.internal_id == 168)
+      req.update_attributes(:label => "b", :ord => 33)
+    elsif(req.requirement.internal_id == 169)
+      req.update_attributes(:label => "10", :ord => 34)
+    elsif(req.requirement.internal_id == 170)
+      req.update_attributes(:label => "11", :ord => 35)
+    elsif(req.requirement.internal_id == 171)
+      req.update_attributes(:label => "12", :ord => 36)
+    elsif(req.requirement.internal_id == 172)
+      req.update_attributes(:label => "13", :ord => 37)
+    end
+  end
+  puts "Updated Second Class ar's"
+end
+
 # Scout.all.each do |scout|
 #   rank = Rank.find_by_name("Star")
 #   scout.advancements << rank
