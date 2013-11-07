@@ -73,7 +73,7 @@
         <td><%= hour.title %></td>
         <td><%= hour.place %></td>
         <td><%= hour.date_of_service %></td>
-        <td><%= hour.minutes %></td>
+        <td><%= hour.minutes/60.0 %></td>
       </tr>
       <% end %>
     </tbody>
