@@ -1,4 +1,5 @@
 class ServiceHoursController < ApplicationController
+  include ServiceHoursHelper
   before_action :set_scout, only: [:create]
 
   def create
@@ -7,6 +8,7 @@ class ServiceHoursController < ApplicationController
     mins_worked = mins.to_i + (hours.to_i * 60)
     sh = ServiceHour.create!(:title => params[:title], :place => params[:place], :minutes => mins_worked, :date_of_service => params[:date])
     @scout.service_hours << sh
+    update_service_hours(scout)
 
     respond_to do |format|
       format.json {
