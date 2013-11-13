@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015102002) do
+ActiveRecord::Schema.define(version: 20131113105320) do
 
   create_table "advancement_requirements", force: true do |t|
     t.integer  "advancement_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20131015102002) do
     t.string   "children"
     t.integer  "children_count"
     t.integer  "parent"
+    t.integer  "service_minutes"
   end
 
   create_table "advancements", force: true do |t|
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131015102002) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "internal_id"
-    t.integer  "children_merit_badge_count", default: 0  #number of mb's required for a specific advancementn requirement
+    t.integer  "children_merit_badge_count", default: 0
   end
 
   create_table "scout_advancements", force: true do |t|
