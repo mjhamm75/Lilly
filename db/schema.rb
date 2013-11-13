@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131015102002) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "internal_id"
-    t.integer  "children_merit_badge_count", default: 0
+    t.integer  "children_merit_badge_count", default: 0  #number of mb's required for a specific advancementn requirement
   end
 
   create_table "scout_advancements", force: true do |t|
