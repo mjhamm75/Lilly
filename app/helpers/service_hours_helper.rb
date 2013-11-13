@@ -1,6 +1,5 @@
 module ServiceHoursHelper
-  def update_service_hours(hours)
-    puts "updating hours"
-    puts hours
+  def update_service_hours(scout)
+    puts scout
   end
 end
