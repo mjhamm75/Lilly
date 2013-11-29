@@ -5,7 +5,7 @@ describe "ServiceHoursHelpers" do
 
   describe "testtest" do
     it "should equal Jason" do
-      test.should eql("Jason")
+      helper.test.should eql("Jason")
     end
   end
 end
