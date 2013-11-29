@@ -24,4 +24,8 @@ module ServiceHoursHelper
     end
     totalTimeServedInMinutes
   end
+
+  def test
+    "Jason"
+  end
 end
