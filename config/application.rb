@@ -25,5 +25,14 @@ module Lilly
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.generators do |g|
+      g.test_framework :rspec, fixture: true
+      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.view_specs false
+      g.helper_specs true
+      g.stylesheets = false
+      g.javascripts = false
+      g.helper = false
+    end
   end
 end
