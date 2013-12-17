@@ -5,3 +5,5 @@ rake db:create
 rake db:migrate
 
 run rails server
+
+make it work
